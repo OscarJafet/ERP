@@ -71,6 +71,11 @@ Conexion con=new Conexion();
         getContentPane().add(usuariotxf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 150, -1));
 
         pwd.setText("jPasswordField1");
+        pwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pwdFocusGained(evt);
+            }
+        });
         getContentPane().add(pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -106,6 +111,10 @@ Conexion con=new Conexion();
     con.cerrarConexion();
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void pwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwdFocusGained
+        pwd.setText(null);
+    }//GEN-LAST:event_pwdFocusGained
 
     /**
      * @param args the command line arguments
