@@ -96,6 +96,41 @@ public class Conexion {
             return false;
      
      }
+        
+        
+        
+        public String Name(Object username){
+       
+       
+        cadenaSQL="select distinct em.nombre, em.apaterno from usuarios us "
+                + "inner join empleados em on em.idempleado=us.idempleado "
+                + "where us.nombre='"+username+"' " ;
+           
+        try {
+          
+          String status = null;
+              String apellido= null;
+       stn =  abreConexion().createStatement();
+       rs = stn.executeQuery(cadenaSQL);
+      
+       
+            while(rs.next()){
+                     status=rs.getString("NOMBRE");  
+                      apellido=rs.getString("APATERNO");  
+            }
+            
+                    return status +" " +apellido;  
+                      
+        } catch (Exception ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            JOptionPane.showConfirmDialog(null, "User incorrecto");
+            return "";
+     
+     }
+        
+        
+        
         public void setUsuario(String Usuario){
             usuarioname=Usuario;
         }

@@ -95,11 +95,13 @@ Conexion con=new Conexion();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btniniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciaActionPerformed
-       Object dato[]=new Object[2];
+
+        Object dato[]=new Object[2];
        if(con.logginUser(usuariotxf.getText(), pwd.getText())==true){
+       
            Menu m=new Menu();
            m.setVisible(true);
-           m.usuario=String.valueOf(usuariotxf.getText());
+           m.usuario=String.valueOf(con.Name(usuariotxf.getText().toString()));
            dispose();
            System.out.println("felicidades");
                    }
