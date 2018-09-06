@@ -58,7 +58,7 @@ public class EmpaqueOperaciones {
     public void consultaEspecifica(JTable tabla, Connection con,Object dato[]){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select em.IDEMPAQUE,em.NOMBRE,em.CAPACIDAD,em.ESTATUS,uni.NOMBRE as nomm from empaques em, unidadmedida uni where em.nombre='"+dato[0]+"' and em.IDEMPLAQUE= "+dato[1];
+        cadenaSQL="select em.IDEMPAQUE,em.NOMBRE,em.CAPACIDAD,em.ESTATUS,uni.NOMBRE as nomm from empaques em, unidadmedida uni where em.nombre='"+dato[0]+"' and em.IDEMPAQUE= "+dato[1];
            
         try {
             stn=(java.sql.Statement) con.createStatement();
@@ -134,6 +134,35 @@ public class EmpaqueOperaciones {
         }
      
      }
-            
+       
+           public void actualizarCantidad(Object dato[]){
+       
+ 
+        cadenaSQL="update empaques set  Capacidad="+dato[0]+" where idempaque="+dato[1];
+           
+        try {
+            stn.executeUpdate(cadenaSQL);
+            JOptionPane.showMessageDialog(null, "Actualizacion Correcta");
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+     }
+           
+      public void Activar(Object dato[]){
+       
+ 
+        cadenaSQL="update empaques set estatus = "+dato[0]+" where idempaque="+dato[1];
+           
+        try {
+            stn.executeUpdate(cadenaSQL);
+            JOptionPane.showMessageDialog(null, "Empaque dado de Alta");
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+     }
+ 
+ 
 }
 

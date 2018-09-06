@@ -1,6 +1,9 @@
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -19,7 +22,9 @@ Conexion con=new Conexion();
     public Login() {
     
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
         try {
+            
         this.setLocationRelativeTo(null);
         
         con.abreConexion();
@@ -47,6 +52,7 @@ Conexion con=new Conexion();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,13 +99,19 @@ Conexion con=new Conexion();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+public Image getImageIcon(){
+    Image retV=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconoSW/agro.jpg"));
+    return retV;
+    
+    }
     private void btniniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciaActionPerformed
-       Object dato[]=new Object[2];
+
+        Object dato[]=new Object[2];
        if(con.logginUser(usuariotxf.getText(), pwd.getText())==true){
+       
            Menu m=new Menu();
            m.setVisible(true);
-           m.usuario=String.valueOf(usuariotxf.getText());
+           m.usuario=String.valueOf(con.Name(usuariotxf.getText().toString()));
            dispose();
            System.out.println("felicidades");
                    }

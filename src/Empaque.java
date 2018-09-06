@@ -1,6 +1,7 @@
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,7 @@ String Username;
      */
     public Empaque() {
         initComponents();
+           setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
              Clave.setEnabled(false);
        nombre.setEnabled(false);
@@ -36,10 +38,13 @@ String Username;
         btnaction.setEnabled(false);
         Clave1.setEnabled(false);
        nombre1.setEnabled(false);
+        btnaction2.setEnabled(false);
+         CantidadActualizar.setEnabled(false);
     try {
         con.abreConexion();
         em.consultaregistroE(MEDIDAUNI, con.abreConexion());
         em.consultaTodosEmpaque(tablabaja, con.abreConexion());
+          em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
          em.consultaTodosEmpaque(jTable2, con.abreConexion());
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,6 +94,17 @@ String Username;
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
+        Actualizaciones = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablabaja1 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        CantidadActualizar = new javax.swing.JTextField();
+        btnaction2 = new javax.swing.JButton();
+        actualiza = new javax.swing.JRadioButton();
+        activa = new javax.swing.JRadioButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         Minimiza = new javax.swing.JButton();
         regresa = new javax.swing.JButton();
         salir = new javax.swing.JButton();
@@ -321,6 +337,93 @@ String Username;
 
         jTabbedPane1.addTab("Lista General", consultayelimina);
 
+        Actualizaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablabaja1.setBackground(new java.awt.Color(102, 153, 255));
+        tablabaja1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Clave del Empaque", "Nombre", "Capacidad", "Estatus", "Unidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablabaja1.setSelectionForeground(new java.awt.Color(153, 255, 153));
+        jScrollPane4.setViewportView(tablabaja1);
+
+        Actualizaciones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 530, 260));
+
+        jPanel4.setLayout(null);
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Cantidad Nueva");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(10, 40, 96, 15);
+
+        CantidadActualizar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CantidadActualizarKeyTyped(evt);
+            }
+        });
+        jPanel4.add(CantidadActualizar);
+        CantidadActualizar.setBounds(110, 30, 180, 30);
+
+        btnaction2.setText("Action");
+        btnaction2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaction2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnaction2);
+        btnaction2.setBounds(440, 60, 100, 23);
+
+        actualiza.setBackground(new java.awt.Color(153, 153, 153));
+        buttonGroup1.add(actualiza);
+        actualiza.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        actualiza.setForeground(new java.awt.Color(255, 255, 255));
+        actualiza.setText("Actualizar Campos");
+        actualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(actualiza);
+        actualiza.setBounds(390, 30, 153, 25);
+
+        activa.setBackground(new java.awt.Color(153, 153, 153));
+        buttonGroup1.add(activa);
+        activa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        activa.setForeground(new java.awt.Color(255, 255, 255));
+        activa.setText("Activar");
+        activa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(activa);
+        activa.setBounds(300, 30, 90, 23);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesLogin/fonodo.jpg"))); // NOI18N
+        jPanel4.add(jLabel14);
+        jLabel14.setBounds(0, 0, 560, 90);
+
+        Actualizaciones.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 550, 90));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenpaquete/fondo-de-madera-realista_1022-69.jpg"))); // NOI18N
+        Actualizaciones.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 570, 420));
+
+        jTabbedPane1.addTab("Actualiza Cantidad", Actualizaciones);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 570, 390));
 
         Minimiza.setText("-");
@@ -387,11 +490,15 @@ String Username;
     }//GEN-LAST:event_CantidadKeyTyped
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-       btnaction.setText(registrar.getText());
+      CantidadActualizar.setEnabled(false);
+    
+        btnaction.setText(registrar.getText());
     btnaction1.setText("Action");
+      btnaction2.setText("Action");
            Clave1.setEnabled(false);
        nombre1.setEnabled(false);
        btnaction1.setEnabled(false);
+        btnaction2.setEnabled(false);
         btnaction.setEnabled(true);
        Clave.setEnabled(true);
        nombre.setEnabled(true);
@@ -411,7 +518,7 @@ String Username;
           
            em.insertaEmpaque(dato);
               borraT(tablabaja);
-       
+         borraT(tablabaja1);
               borraT(jTable2);
             
               try {
@@ -420,6 +527,7 @@ String Username;
         
                   em.consultaTodosEmpaque(jTable2, con.abreConexion());
     
+                   em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
               } catch (ClassNotFoundException ex) {
         
                   Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
@@ -429,11 +537,21 @@ String Username;
             }else{
                  JOptionPane.showConfirmDialog(null, "Minimo ingresa Clave y nombre");
             } 
+          CantidadActualizar.setText(null);
+       Clave.setText(null);
+       nombre.setText(null);
+       Cantidad.setText(null);
+       
+       Clave1.setText(null);
+       nombre1.setText(null);   
        }
     }//GEN-LAST:event_btnactionActionPerformed
 
     private void eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar1ActionPerformed
-        btnaction1.setText(eliminar1.getText());
+ btnaction.setEnabled(false);
+        CantidadActualizar.setEnabled(false);
+      btnaction2.setText("Action");    
+    btnaction1.setText(eliminar1.getText());
           btnaction.setText("Action");
          btnaction1.setEnabled(true);
         btnaction.setEnabled(false);
@@ -460,16 +578,27 @@ String Username;
            }else{
               JOptionPane.showConfirmDialog(null, "Minimo ingresa Clave y nombre");
        }
-           
+      
+        CantidadActualizar.setText(null);
+       Clave.setText(null);
+       nombre.setText(null);
+       Cantidad.setText(null);
+       Clave1.setText(null);
+       nombre1.setText(null);   
        }else if(eliminar1.isSelected()){
             Object dato[]=new Object[10];
             dato[0]="'B'";
             int a= tablabaja.getSelectedRow();
-            if(a!=-1){
+          
+            if(a!=-1 ){
+                      Object p;
+            p= String.valueOf(tablabaja.getValueAt(tablabaja.getSelectedRow(), 3).toString());
+            
+                    if( p.equals("A")){
            dato[1]=Integer.parseInt(String.valueOf(tablabaja.getValueAt(tablabaja.getSelectedRow(), 0)));
           em.BajaEmpaque(dato);
            borraT(tablabaja);
-       
+         borraT(tablabaja1);
               borraT(jTable2);
             
               try {
@@ -478,16 +607,25 @@ String Username;
         
                   em.consultaTodosEmpaque(jTable2, con.abreConexion());
     
+                   em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
               } catch (ClassNotFoundException ex) {
         
                   Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
     
               }
-            }else{
-                          JOptionPane.showConfirmDialog(null, "Selecione un renglon de la tabla");
+            }else{ JOptionPane.showConfirmDialog(null, "Selecione un renglon de Alta");   }
+             }else{
+                          JOptionPane.showConfirmDialog(null, "Selecione un renglon");
 
-            }
+           }
            
+              CantidadActualizar.setText(null);
+       Clave.setText(null);
+       nombre.setText(null);
+       Cantidad.setText(null);
+       
+       Clave1.setText(null);
+       nombre1.setText(null);   
      }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnaction1ActionPerformed
@@ -512,7 +650,10 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     }//GEN-LAST:event_nombre1KeyTyped
 
     private void consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaActionPerformed
-         btnaction1.setText(consulta.getText());
+
+       CantidadActualizar.setEnabled(false);
+      btnaction2.setText("Action");
+        btnaction1.setText(consulta.getText());
           btnaction.setText("Action");
          btnaction1.setEnabled(true);
         btnaction.setEnabled(false);
@@ -522,6 +663,7 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
        MEDIDAUNI.setEnabled(false);
        Clave1.setEnabled(true);
        nombre1.setEnabled(true);
+        btnaction2.setEnabled(false);
     }//GEN-LAST:event_consultaActionPerformed
 
     private void regresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresaActionPerformed
@@ -531,6 +673,131 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
            
            dispose();
     }//GEN-LAST:event_regresaActionPerformed
+
+    private void CantidadActualizarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadActualizarKeyTyped
+               char Validar=evt.getKeyChar();
+      if(Character.isLetter(Validar)){
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showConfirmDialog(rootPane, "Ingrese solo numeros");
+      }
+    }//GEN-LAST:event_CantidadActualizarKeyTyped
+
+    private void btnaction2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaction2ActionPerformed
+ if(activa.isSelected()){
+            Object dato[]=new Object[10];
+            dato[0]="'A'";
+            int a= tablabaja1.getSelectedRow();
+           if(a!=-1 ){
+                 Object p;
+                   p= String.valueOf(tablabaja1.getValueAt(tablabaja1.getSelectedRow(), 3).toString());
+
+               if( p.equals("B")){
+                
+            
+           dato[1]=Integer.parseInt(String.valueOf(tablabaja1.getValueAt(tablabaja1.getSelectedRow(), 0)));
+          em.Activar(dato);
+           borraT(tablabaja);
+                   borraT(tablabaja1);
+              borraT(jTable2);
+            
+              try {
+       
+                  em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
+                      em.consultaTodosEmpaque(tablabaja, con.abreConexion());
+                  em.consultaTodosEmpaque(jTable2, con.abreConexion());
+    
+              } catch (ClassNotFoundException ex) {
+        
+                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+    
+                                                   }
+               }else{ JOptionPane.showConfirmDialog(null, "Selecione un renglon de Baja");   }
+             }else{
+                          JOptionPane.showConfirmDialog(null, "Selecione un renglon");
+
+           }
+              CantidadActualizar.setText(null);
+       Clave.setText(null);
+       nombre.setText(null);
+       Cantidad.setText(null);
+       
+       Clave1.setText(null);
+       nombre1.setText(null);   
+     }else if(actualiza.isSelected()){
+        Object dato[]=new Object[10];
+        
+            int a= tablabaja1.getSelectedRow();
+           if(a!=-1 ){
+               
+
+               if(!CantidadActualizar.getText().isEmpty()){
+                    dato[0]=Integer.parseInt(String.valueOf(CantidadActualizar.getText().toString()));
+            
+           dato[1]=Integer.parseInt(String.valueOf(tablabaja1.getValueAt(tablabaja1.getSelectedRow(), 0)));
+          em.actualizarCantidad(dato);
+           borraT(tablabaja);
+                   borraT(tablabaja1);
+              borraT(jTable2);
+            
+              try {
+       
+                  em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
+                      em.consultaTodosEmpaque(tablabaja, con.abreConexion());
+                  em.consultaTodosEmpaque(jTable2, con.abreConexion());
+    
+              } catch (ClassNotFoundException ex) {
+        
+                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+    
+                                                   }
+               }else{ JOptionPane.showMessageDialog(null, "ingrese un valor");   }
+             }else{
+                          JOptionPane.showMessageDialog(null, "selecione un renglon");}
+   CantidadActualizar.setText(null);
+       Clave.setText(null);
+       nombre.setText(null);
+       Cantidad.setText(null);
+       
+       Clave1.setText(null);
+       nombre1.setText(null);   
+           }
+           
+    }//GEN-LAST:event_btnaction2ActionPerformed
+
+    private void actualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizaActionPerformed
+      btnaction2.setText(actualiza.getText());
+    btnaction1.setText("Action");
+    btnaction.setText("Action");
+           Clave1.setEnabled(false);
+       nombre1.setEnabled(false);
+        btnaction2.setEnabled(true);
+       btnaction1.setEnabled(false);
+        btnaction.setEnabled(false);
+       Clave.setEnabled(false);
+       nombre.setEnabled(false);
+       Cantidad.setEnabled(false);
+       MEDIDAUNI.setEnabled(false);
+      CantidadActualizar.setEnabled(true);
+   // TODO add your handling code here:
+    }//GEN-LAST:event_actualizaActionPerformed
+
+    private void activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activaActionPerformed
+       btnaction2.setText(activa.getText());
+    btnaction1.setText("Action");
+    btnaction.setText("Action");
+           Clave1.setEnabled(false);
+       nombre1.setEnabled(false);
+        btnaction2.setEnabled(true);
+       btnaction1.setEnabled(false);
+        btnaction.setEnabled(false);
+       Clave.setEnabled(false);
+       nombre.setEnabled(false);
+       Cantidad.setEnabled(false);
+       MEDIDAUNI.setEnabled(false);
+      CantidadActualizar.setEnabled(false);
+
+    }//GEN-LAST:event_activaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -568,13 +835,18 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Actualizaciones;
     private javax.swing.JTextField Cantidad;
+    private javax.swing.JTextField CantidadActualizar;
     private javax.swing.JTextField Clave;
     private javax.swing.JTextField Clave1;
     private javax.swing.JTable MEDIDAUNI;
     private javax.swing.JButton Minimiza;
+    private javax.swing.JRadioButton activa;
+    private javax.swing.JRadioButton actualiza;
     private javax.swing.JButton btnaction;
     private javax.swing.JButton btnaction1;
+    private javax.swing.JButton btnaction2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton consulta;
     private javax.swing.JPanel consultageneral;
@@ -582,8 +854,11 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     private javax.swing.JRadioButton eliminar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -593,9 +868,11 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField2;
@@ -606,5 +883,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     private javax.swing.JButton regresa;
     private javax.swing.JButton salir;
     private javax.swing.JTable tablabaja;
+    private javax.swing.JTable tablabaja1;
     // End of variables declaration//GEN-END:variables
 }
