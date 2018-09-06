@@ -1,3 +1,6 @@
+
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +13,15 @@
  */
 public class LabConsulta extends javax.swing.JFrame {
 String Username;
-    /**
+String a,b,c,d;
+Conexion con;
+/**
      * Creates new form LabConsulta
      */
+
     public LabConsulta() {
         initComponents();
+        LaboratorioOperaciones la=new LaboratorioOperaciones();
     }
 
     /**
@@ -30,7 +37,7 @@ String Username;
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaLaboratorios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,9 +48,14 @@ String Username;
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaLaboratorios.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        TablaLaboratorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -59,7 +71,7 @@ String Username;
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaLaboratorios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,6 +103,24 @@ String Username;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+        public void borrarTabla()
+    {
+        DefaultTableModel tabT = (DefaultTableModel)TablaLaboratorios.getModel();
+        for(int i = tabT.getRowCount()-1; i>-1; i--)
+        {
+            tabT.removeRow(i);
+        }
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+
+
+//        a=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),0);
+//        b=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),1);
+//        c=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),2);
+//        d=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),3);
+//        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,10 +158,10 @@ String Username;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaLaboratorios;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
