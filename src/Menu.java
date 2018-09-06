@@ -55,6 +55,7 @@ String usuario;
         mbMenuprincipal = new javax.swing.JMenuBar();
         labo = new javax.swing.JMenu();
         empaque = new javax.swing.JMenu();
+        MCategoria = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -142,6 +143,14 @@ String usuario;
         });
         mbMenuprincipal.add(empaque);
 
+        MCategoria.setText("Categoria");
+        MCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MCategoriaMouseClicked(evt);
+            }
+        });
+        mbMenuprincipal.add(MCategoria);
+
         setJMenuBar(mbMenuprincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,6 +220,12 @@ String usuario;
         dispose();
     }//GEN-LAST:event_regresaActionPerformed
 
+    private void MCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MCategoriaMouseClicked
+        Categoria c= new Categoria();
+        c.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_MCategoriaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -247,6 +262,7 @@ String usuario;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MCategoria;
     private javax.swing.JButton Minimiza;
     private javax.swing.JMenu empaque;
     private javax.swing.JLabel jLabel1;
