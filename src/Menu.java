@@ -202,8 +202,10 @@ String usuario;
     }//GEN-LAST:event_laboFocusGained
 
     private void laboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laboMouseClicked
-     System.out.println("hola"
-               );
+     LabConsulta l=new LabConsulta();
+        l.setVisible(true);
+        l.Username=usuario;
+        dispose();
     }//GEN-LAST:event_laboMouseClicked
 
     private void empaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empaqueMouseClicked
