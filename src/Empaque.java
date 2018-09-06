@@ -1,6 +1,7 @@
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,7 @@ String Username;
      */
     public Empaque() {
         initComponents();
+           setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
              Clave.setEnabled(false);
        nombre.setEnabled(false);

@@ -4,6 +4,7 @@ import java.util.Date ;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,6 +23,7 @@ String usuario;
      */
     public Menu() {
         initComponents();
+           setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
          this.setLocationRelativeTo(null);
          //this.setExtendedState(MAXIMIZED_BOTH);
       jPanel1.setLocation(0,0);
