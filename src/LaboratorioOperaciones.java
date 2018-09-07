@@ -31,7 +31,7 @@ public class LaboratorioOperaciones {
     public void consultaTodosLaboratorios(JTable tabla, Connection con){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select IDLABORATORIO,NOMBRE,ORIGEN,ESTATUS from laboratorios";
+        cadenaSQL="select * from laboratorios";
            
         try {
             stn=(java.sql.Statement) con.createStatement();
@@ -57,7 +57,7 @@ public class LaboratorioOperaciones {
     public void consultaEspecifica(JTable tabla, Connection con,Object dato[]){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select IDLABORATORIO,NOMBRE,ORIGEN,ESTATUS from laboratorios where nombre='"+dato[0]+"";
+        cadenaSQL="select idlaboratorio,nombre,origen,estatus from laboratorios where nombre='"+dato[0]+"'";
            
         try {
             stn=(java.sql.Statement) con.createStatement();
