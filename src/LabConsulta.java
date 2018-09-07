@@ -17,22 +17,20 @@ import javax.swing.table.DefaultTableModel;
 public class LabConsulta extends javax.swing.JFrame {
 String Username;
 String a,b,c,d;
-Conexion con;
+Conexion cont;
 LaboratorioOperaciones la=new LaboratorioOperaciones();
-LabConsulta l=new LabConsulta();
 /**
      * Creates new form LabConsulta
      */
 
-    public LabConsulta() {
-   
-        
+    public LabConsulta() {       
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
          
     try {
-        con.abreConexion();
-        la.consultaTodosLaboratorios(TablaLaboratorios, con.abreConexion());
+        cont.abreConexion();
+        la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
     } catch (ClassNotFoundException ex) {
         Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -126,18 +124,20 @@ LabConsulta l=new LabConsulta();
         }
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         Object dato[]={
-         txfNombre.getText()
-        
-        };
-        la.consultaEspecifica(TablaLaboratorios,null,dato);
+        txfNombre.getText()
+    
+    };
+        try {
+        cont.abreConexion();
+        la.consultaEspecifica(TablaLaboratorios, cont.abreConexion(),dato);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+    }
 
 
-//        a=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),0);
-//        b=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),1);
-//        c=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),2);
-//        d=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),3);
-//        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
