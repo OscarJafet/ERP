@@ -56,6 +56,10 @@ String usuario;
         jLabel1 = new javax.swing.JLabel();
         mbMenuprincipal = new javax.swing.JMenuBar();
         labo = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         empaque = new javax.swing.JMenu();
         MCategoria = new javax.swing.JMenu();
 
@@ -125,16 +129,34 @@ String usuario;
                 laboFocusGained(evt);
             }
         });
-        labo.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        jMenuItem3.setText("Registrar");
+        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                laboMouseClicked(evt);
+                jMenuItem3MouseClicked(evt);
             }
         });
-        labo.addActionListener(new java.awt.event.ActionListener() {
+        labo.add(jMenuItem3);
+
+        jMenuItem2.setText("Actualizar");
+        labo.add(jMenuItem2);
+
+        jMenuItem4.setText("Consultar");
+        jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem4MouseClicked(evt);
+            }
+        });
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                laboActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
+        labo.add(jMenuItem4);
+
+        jMenuItem5.setText("Eliminar");
+        labo.add(jMenuItem5);
+
         mbMenuprincipal.add(labo);
 
         empaque.setText("Empaque");
@@ -193,20 +215,9 @@ String usuario;
        this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_MinimizaActionPerformed
 
-    private void laboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laboActionPerformed
-
-    }//GEN-LAST:event_laboActionPerformed
-
     private void laboFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_laboFocusGained
        
     }//GEN-LAST:event_laboFocusGained
-
-    private void laboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laboMouseClicked
-     LabConsulta l=new LabConsulta();
-        l.setVisible(true);
-        l.Username=usuario;
-        dispose();
-    }//GEN-LAST:event_laboMouseClicked
 
     private void empaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empaqueMouseClicked
        Empaque e=new Empaque();
@@ -229,6 +240,33 @@ String usuario;
         c.setVisible(true);
         dispose();
     }//GEN-LAST:event_MCategoriaMouseClicked
+
+    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
+    Laboratorio m=new Laboratorio();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+
+
+
+    }//GEN-LAST:event_jMenuItem3MouseClicked
+
+    private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
+      LabConsulta l=new LabConsulta();
+        l.setVisible(true);
+        l.Username=usuario;
+        dispose();
+
+    }//GEN-LAST:event_jMenuItem4MouseClicked
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+      LabConsulta l=new LabConsulta();
+        l.setVisible(true);
+        l.Username=usuario;
+        dispose();
+
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,6 +309,10 @@ String usuario;
     private javax.swing.JMenu empaque;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu labo;
     private javax.swing.JLabel lblLoginUser;

@@ -125,8 +125,8 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
             }
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     if(txfNombre.getText().isEmpty()){
-                Object dat[]= new Object[10];
+     if(!txfNombre.getText().isEmpty()){
+                Object dat[]= new Object[100];
                 dat[0]= txfNombre.getText();
                 
                 try{
@@ -140,11 +140,10 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
                 JOptionPane.showConfirmDialog(null, "Debes ingresar el Nombre");
             }
             
-            
-       
-
-
-
+     
+     
+     
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
