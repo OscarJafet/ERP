@@ -1,4 +1,7 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -15,13 +18,24 @@ public class LabConsulta extends javax.swing.JFrame {
 String Username;
 String a,b,c,d;
 Conexion con;
+LaboratorioOperaciones la=new LaboratorioOperaciones();
+LabConsulta l=new LabConsulta();
 /**
      * Creates new form LabConsulta
      */
 
     public LabConsulta() {
+   
+        
         initComponents();
-        LaboratorioOperaciones la=new LaboratorioOperaciones();
+          this.setLocationRelativeTo(null);
+         
+    try {
+        con.abreConexion();
+        la.consultaTodosLaboratorios(TablaLaboratorios, con.abreConexion());
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**
@@ -33,7 +47,7 @@ Conexion con;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        txfNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -41,7 +55,7 @@ Conexion con;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txfNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Nombre");
@@ -83,7 +97,7 @@ Conexion con;
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -94,7 +108,7 @@ Conexion con;
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -112,7 +126,11 @@ Conexion con;
         }
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+        Object dato[]={
+         txfNombre.getText()
+        
+        };
+        la.consultaEspecifica(TablaLaboratorios,null,dato);
 
 
 //        a=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),0);
@@ -162,6 +180,6 @@ Conexion con;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txfNombre;
     // End of variables declaration//GEN-END:variables
 }
