@@ -2,6 +2,8 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -115,26 +117,31 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        public void borrarTabla()
-    {
-        DefaultTableModel tabT = (DefaultTableModel)TablaLaboratorios.getModel();
-        for(int i = tabT.getRowCount()-1; i>-1; i--)
-        {
-            tabT.removeRow(i);
-        }
+       public void borrarTabla(JTable tabla){
+        DefaultTableModel tamblatem=(DefaultTableModel)tabla.getModel();
+            for (int i = tamblatem.getRowCount()-1; i >=0; i--) {
+                tamblatem.removeRow(i);
+                tamblatem.removeTableModelListener(tabla);
+            }
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        Object dato[]={
-        txfNombre.getText()
-    
-    };
-        try {
-        cont.abreConexion();
-        la.consultaEspecifica(TablaLaboratorios, cont.abreConexion(),dato);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
-    }
+     if(txfNombre.getText().isEmpty()){
+                Object dat[]= new Object[10];
+                dat[0]= txfNombre.getText();
+                
+                try{
+                    borrarTabla(TablaLaboratorios);
+                    la.consultaEspecifica(TablaLaboratorios,cont.abreConexion(), dat);
+                
+                }catch(Exception ex){
+                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showConfirmDialog(null, "Debes ingresar el Nombre");
+            }
+            
+            
+       
 
 
 
