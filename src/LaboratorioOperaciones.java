@@ -57,7 +57,7 @@ public class LaboratorioOperaciones {
     public void consultaEspecifica(JTable tabla, Connection con,Object dato[]){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select IDLABORATORIO,NOMBRE,ORIGEN,ESTATUS from laboratorios where nombre='"+dato[1]+"";
+        cadenaSQL="select IDLABORATORIO,NOMBRE,ORIGEN,ESTATUS from laboratorios where nombre='"+dato[0]+"";
            
         try {
             stn=(java.sql.Statement) con.createStatement();
