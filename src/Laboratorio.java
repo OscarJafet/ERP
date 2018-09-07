@@ -51,13 +51,10 @@ public class Laboratorio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         txfNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txfNombre.setForeground(new java.awt.Color(255, 255, 255));
 
         txfOrrigen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txfOrrigen.setForeground(new java.awt.Color(255, 255, 255));
 
         txfIDlaboratorio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txfIDlaboratorio.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -76,10 +73,9 @@ public class Laboratorio extends javax.swing.JFrame {
         jLabel4.setText("Estatus");
 
         txfEstatus.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txfEstatus.setForeground(new java.awt.Color(255, 255, 255));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Registrar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -88,7 +84,8 @@ public class Laboratorio extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -102,8 +99,7 @@ public class Laboratorio extends javax.swing.JFrame {
                             .addComponent(txfIDlaboratorio)
                             .addComponent(txfNombre)
                             .addComponent(txfOrrigen)
-                            .addComponent(txfEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1))
+                            .addComponent(txfEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
