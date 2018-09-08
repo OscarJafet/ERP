@@ -23,6 +23,7 @@ public class Laboratorio extends javax.swing.JFrame {
      */
     public Laboratorio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
      public void Datos(String a, String b,String c,String d){
            txfIDlaboratorio.setText(a);
@@ -145,15 +146,20 @@ public class Laboratorio extends javax.swing.JFrame {
            Object dato[]=new Object[10];
            dato[0]=Integer.parseInt(String.valueOf(txfIDlaboratorio.getText()));
            dato[1]=String.valueOf(txfNombre.getText());
+           dato[2]=String.valueOf(txfOrigen.getText());
            dato[2]="'A'";
-           dato[4]=String.valueOf(txfOrigen.getText());
           
-           la.insertalAB(dato);
  
-            }else{
-                 JOptionPane.showConfirmDialog(null, "Minimo ingresa Clave y nombre");
-            } 
-             
+          try {
+                     la.insertalAB(dato,cont.abreConexion());
+              
+              } catch (ClassNotFoundException ex) {
+        
+                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+    
+              }
+             }
+   
        txfIDlaboratorio.setText(null);
        txfNombre.setText(null);
        txfOrigen.setText(null);
