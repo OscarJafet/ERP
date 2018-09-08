@@ -105,15 +105,15 @@ public class LaboratorioOperaciones {
         }
      
      }
-      public void insertaEmpaque(Object datos[]){
+      public void insertalAB(Object datos[]){
        
-     cadenaSQL="insert into Empaques values(" +  datos[0]+",'" + datos[1]+"',"
-             +  datos[2]+"," + datos[3]+"," + datos[4]+")";
+     cadenaSQL="insert into Laboaratorios values(" +  datos[0]+",'" + datos[1]+"','"
+             +  datos[2]+"','"  + datos[3]+"')";
         try {
             stn.executeUpdate(cadenaSQL);
             JOptionPane.showMessageDialog(null, "Datos Ingresados");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Emplaque existente");
+            JOptionPane.showMessageDialog(null, "Laboratorio  existente");
 //            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
      
