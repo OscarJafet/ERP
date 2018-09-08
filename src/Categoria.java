@@ -112,6 +112,11 @@ public class Categoria extends javax.swing.JFrame {
         });
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -215,6 +220,13 @@ public class Categoria extends javax.swing.JFrame {
             re.Username=username;
             dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+            ActualizaCategoria ac= new ActualizaCategoria();
+            ac.setVisible(true);
+            ac.Username= username;
+            dispose();
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     public void borrarTabla(JTable tabla){
         DefaultTableModel tamblatem=(DefaultTableModel)tabla.getModel();

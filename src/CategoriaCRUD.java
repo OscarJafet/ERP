@@ -79,8 +79,20 @@ public class CategoriaCRUD {
             rs= stn.executeQuery(cadenaSQL);
             JOptionPane.showMessageDialog(null, "Datos Ingresados");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Emplaque existente");
+            JOptionPane.showMessageDialog(null, "Categoria existente");
 //            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void actualiza(Object datos[], Connection conect){
+        
+        cadenaSQL= "update CATEGORIA set nombre='"+datos[0]+"' where IDCATEGORIA="+datos[1];
+        
+        try{
+            stn= (java.sql.Statement) conect.createStatement();
+            rs=stn.executeQuery(cadenaSQL);
+            JOptionPane.showMessageDialog(null,"Datos Actualizados");
+        }catch(SQLException ex){
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
