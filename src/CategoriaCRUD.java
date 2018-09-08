@@ -1,9 +1,10 @@
-import java.sql.Connection;
+ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -69,6 +70,18 @@ public class CategoriaCRUD {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     
+    }
+    public void inserta (Object datos[],Connection conect){
+        
+      cadenaSQL= "insert into CATEGORIA values("+datos[0]+",'"+datos[1]+"',"+datos[2]+")";
+        try {
+            stn=(java.sql.Statement) conect.createStatement();
+            rs= stn.executeQuery(cadenaSQL);
+            JOptionPane.showMessageDialog(null, "Datos Ingresados");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Emplaque existente");
+//            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

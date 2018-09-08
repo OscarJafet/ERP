@@ -60,6 +60,7 @@ public class Categoria extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Categoria\n");
+        setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 
         Tabla1.setModel(new javax.swing.table.DefaultTableModel(
@@ -212,6 +213,7 @@ public class Categoria extends javax.swing.JFrame {
             RegistrarCategoria re= new RegistrarCategoria();
             re.setVisible(true);
             re.Username=username;
+            dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     public void borrarTabla(JTable tabla){
