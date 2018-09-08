@@ -119,6 +119,11 @@ public class Categoria extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -227,6 +232,39 @@ public class Categoria extends javax.swing.JFrame {
             ac.Username= username;
             dispose();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+            Object dat[]= new Object[10];
+            int valor= Tabla1.getSelectedRow();
+            
+            if (valor!=-1){
+                txfNombreCon.setText(String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 1)).toString());
+                Object status;
+                status= String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 2).toString());
+                
+                if( status.equals("A")){
+                    dat[0]=String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 1).toString());
+                  
+                    try{
+                        
+                        ca.elimina(dat,conect.abreConexion());
+                        borrarTabla(Tabla1);
+                    }catch(Exception ex){
+                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    try {
+                        ca.ConsultaGeneral(Tabla1, conect.abreConexion());
+                    }catch (Exception ex) {
+                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Seleccione un registro con baja");
+                }
+            
+            }else{
+                JOptionPane.showMessageDialog(null,"Debe Seleccuonar una fila");
+            }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     public void borrarTabla(JTable tabla){
         DefaultTableModel tamblatem=(DefaultTableModel)tabla.getModel();

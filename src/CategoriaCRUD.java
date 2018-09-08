@@ -95,5 +95,16 @@ public class CategoriaCRUD {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void elimina (Object datos[], Connection conect){
+                cadenaSQL= "update CATEGORIA set estatus='B'"+"where nombre='"+datos[0]+"'";
+        
+        try{
+            stn= (java.sql.Statement) conect.createStatement();
+            rs=stn.executeQuery(cadenaSQL);
+            JOptionPane.showMessageDialog(null,"Categoria dada de baja");
+        }catch(SQLException ex){
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
