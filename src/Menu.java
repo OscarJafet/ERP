@@ -136,6 +136,11 @@ String usuario;
                 jMenuItem3MouseClicked(evt);
             }
         });
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         labo.add(jMenuItem3);
 
         jMenuItem2.setText("Actualizar");
@@ -267,6 +272,14 @@ String usuario;
 
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+         Laboratorio m=new Laboratorio();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

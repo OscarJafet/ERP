@@ -1,4 +1,5 @@
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -105,12 +106,14 @@ public class LaboratorioOperaciones {
         }
      
      }
-      public void insertalAB(Object datos[]){
+      public void insertalAB(Object datos[],Connection con){
        
-     cadenaSQL="insert into Laboaratorios values(" +  datos[0]+",'" + datos[1]+"','"
-             +  datos[2]+"','"  + datos[3]+"')";
+     cadenaSQL="insert into laboratorios values(" +  datos[0]+",'" + datos[1]+"',"
+             +datos[2]+",'"  +datos[3]+"'" + ")";
         try {
-            stn.executeUpdate(cadenaSQL);
+            stn=(java.sql.Statement) con.createStatement();
+            rs=stn.executeQuery(cadenaSQL);
+        
             JOptionPane.showMessageDialog(null, "Datos Ingresados");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Laboratorio  existente");
