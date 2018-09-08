@@ -125,24 +125,26 @@ public class LaboratorioOperaciones {
          public void BajaEmpaque(Object dato[]){
        
  
-        cadenaSQL="update empaques set estatus = "+dato[0]+" where idempaque="+dato[1];
+        cadenaSQL="update laboratorios set estatus = "+dato[0]+" where idlaboratorios="+dato[1];
            
         try {
             stn.executeUpdate(cadenaSQL);
-            JOptionPane.showMessageDialog(null, "Empaque dado de baja");
+            JOptionPane.showMessageDialog(null, "Laboratorio dado de baja");
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
      
      }
        
-           public void actualizarCantidad(Object dato[]){
+           public void actualizar(Object dato[],Connection con){
        
  
-        cadenaSQL="update empaques set  Capacidad="+dato[0]+" where idempaque="+dato[1];
+        cadenaSQL="update laboratorios set  nombre='"+dato[1]+"', origen='"+dato[2]+"' where idempaque="+dato[0];
            
         try {
+            stn = (Statement) con.createStatement();
             stn.executeUpdate(cadenaSQL);
+            
             JOptionPane.showMessageDialog(null, "Actualizacion Correcta");
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,7 +155,7 @@ public class LaboratorioOperaciones {
       public void Activar(Object dato[]){
        
  
-        cadenaSQL="update empaques set estatus = "+dato[0]+" where idempaque="+dato[1];
+        cadenaSQL="update laboratorios set estatus = "+dato[0]+" where idempaque="+dato[1];
            
         try {
             stn.executeUpdate(cadenaSQL);

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author gavil
  */
-public class Laboratorio extends javax.swing.JFrame {
+public class LabActualizar extends javax.swing.JFrame {
     String Username;
     Conexion cont;
     LaboratorioOperaciones la= new LaboratorioOperaciones();
@@ -21,7 +21,7 @@ public class Laboratorio extends javax.swing.JFrame {
     /**
      * Creates new form Laboratorio
      */
-    public Laboratorio() {
+    public LabActualizar() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -50,7 +50,7 @@ public class Laboratorio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txfOrigen = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         Minimiza = new javax.swing.JButton();
         regresa = new javax.swing.JButton();
         salir = new javax.swing.JButton();
@@ -78,12 +78,12 @@ public class Laboratorio extends javax.swing.JFrame {
 
         txfOrigen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Registrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -122,7 +122,7 @@ public class Laboratorio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(btnActualizar)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -156,7 +156,7 @@ public class Laboratorio extends javax.swing.JFrame {
                     .addComponent(txfOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnActualizar)
                 .addGap(18, 18, 18))
         );
 
@@ -174,19 +174,19 @@ public class Laboratorio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
        
              if(!txfIDlaboratorio.getText().isEmpty() && !txfNombre.getText().isEmpty()){
            Object dato[]=new Object[10];
            dato[0]=Integer.parseInt(String.valueOf(txfIDlaboratorio.getText()));
            dato[1]=String.valueOf(txfNombre.getText());
            dato[2]=String.valueOf(txfOrigen.getText());
-           dato[2]="'A'";
+           
           
  
           try {
-                     la.insertalAB(dato,cont.abreConexion());
-              
+                     la.actualizar(dato, cont.abreConexion());
+                     
               } catch (ClassNotFoundException ex) {
         
                   Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
@@ -203,7 +203,7 @@ public class Laboratorio extends javax.swing.JFrame {
 
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void MinimizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizaActionPerformed
         this.setExtendedState(ICONIFIED);
@@ -258,7 +258,7 @@ public class Laboratorio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Minimiza;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
