@@ -70,7 +70,7 @@ public class EmpaqueOperaciones {
                    String Y=rs.getString("NOMBRE");
                      String A=rs.getString("CAPACIDAD");
                       String J=rs.getString("ESTATUS");
-                       String  K=rs.getString("nomm");
+                           String  K=rs.getString("nomm");
                        
                 Object datosRenglon[]={X,Y,A,J,K};
                 tablaTemp.addRow(datosRenglon);

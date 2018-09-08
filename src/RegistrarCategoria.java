@@ -1,3 +1,9 @@
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,11 +17,22 @@
 public class RegistrarCategoria extends javax.swing.JFrame {
 
     String Username;
+    Conexion conect;
+    CategoriaCRUD ca= new CategoriaCRUD();
+    Categoria ca1= new Categoria();
     /**
      * Creates new form RegistrarCategoria
      */
     public RegistrarCategoria() {
         initComponents();
+        
+          try{
+              conect.abreConexion();
+          } catch (ClassNotFoundException ex) {
+        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+    }  
+          setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
+          this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,10 +48,8 @@ public class RegistrarCategoria extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txfCategoria = new javax.swing.JTextField();
         txfNombre = new javax.swing.JTextField();
-        cmbEstatus = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,17 +57,22 @@ public class RegistrarCategoria extends javax.swing.JFrame {
         setUndecorated(true);
 
         btnConfirmarGuardado.setText("Guardar");
-        btnConfirmarGuardado.setEnabled(false);
+        btnConfirmarGuardado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarGuardadoActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("IDCategoria");
 
         jLabel2.setText("Nombre");
-
-        jLabel3.setText("Estatus");
-
-        cmbEstatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B" }));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Registrar Categoria");
@@ -64,7 +84,7 @@ public class RegistrarCategoria extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 201, Short.MAX_VALUE)
+                        .addGap(0, 176, Short.MAX_VALUE)
                         .addComponent(btnConfirmarGuardado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar))
@@ -73,19 +93,14 @@ public class RegistrarCategoria extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(25, 25, 25)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(26, 26, 26)))
+                                        .addComponent(jLabel2)
+                                        .addGap(25, 25, 25)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txfCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                    .addComponent(cmbEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txfNombre)))
                             .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -104,10 +119,6 @@ public class RegistrarCategoria extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -117,6 +128,31 @@ public class RegistrarCategoria extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConfirmarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarGuardadoActionPerformed
+        if(!txfCategoria.getText().isEmpty() && !txfNombre.getText().isEmpty()){            
+            Object dat[]= new Object[10];
+            dat[0]= Integer.parseInt(String.valueOf(txfCategoria.getText()));
+            dat[1]= String.valueOf(txfNombre.getText());
+            dat[2]= "'A'";
+            try{
+                 ca.inserta(dat,conect.abreConexion());
+            }catch(Exception ex){
+                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane,"Debe Ingresar ID y Nombre");
+        } 
+    }//GEN-LAST:event_btnConfirmarGuardadoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+          Categoria ca=new Categoria();
+           ca.setVisible(true);
+            ca.username=String.valueOf(Username);
+           
+           dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,10 +192,8 @@ public class RegistrarCategoria extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmarGuardado;
-    private javax.swing.JComboBox cmbEstatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txfCategoria;
     private javax.swing.JTextField txfNombre;

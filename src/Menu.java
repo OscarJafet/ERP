@@ -238,6 +238,7 @@ String usuario;
     private void MCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MCategoriaMouseClicked
         Categoria c= new Categoria();
         c.setVisible(true);
+        c.username=usuario;
         dispose();
     }//GEN-LAST:event_MCategoriaMouseClicked
 
