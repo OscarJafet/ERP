@@ -122,35 +122,30 @@ public class LaboratorioOperaciones {
      
     }
       
-         public void BajaEmpaque(Object dato[]){
-       
- 
-        cadenaSQL="update laboratorios set estatus = "+dato[0]+" where idlaboratorios="+dato[1];
-           
-        try {
-            stn.executeUpdate(cadenaSQL);
-            JOptionPane.showMessageDialog(null, "Laboratorio dado de baja");
-        } catch (SQLException ex) {
+         public void elimina (Object datos[], Connection conect){
+                cadenaSQL= "update LABORATORIOS set estatus='B'"+"where nombre='"+datos[0]+"'";
+        
+        try{
+            stn= (java.sql.Statement) conect.createStatement();
+            rs=stn.executeQuery(cadenaSQL);
+            JOptionPane.showMessageDialog(null,"Categoria dada de baja");
+        }catch(SQLException ex){
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-     
-     }
-       
-           public void actualizar(Object dato[],Connection con){
-       
- 
-        cadenaSQL="update laboratorios set  nombre='"+dato[1]+"', origen='"+dato[2]+"' where idempaque="+dato[0];
-           
-        try {
-            stn = (Statement) con.createStatement();
-            stn.executeUpdate(cadenaSQL);
-            
-            JOptionPane.showMessageDialog(null, "Actualizacion Correcta");
-        } catch (SQLException ex) {
+    }
+    
+       public void actualiza(Object datos[], Connection conect){
+        
+        cadenaSQL= "update LABORATORIOS set nombre='"+datos[0]+"',ORIGEN='"+datos[1]+"'where IDLABORATORIO="+datos[2];
+        
+        try{
+            stn= (java.sql.Statement) conect.createStatement();
+            rs=stn.executeQuery(cadenaSQL);
+            JOptionPane.showMessageDialog(null,"Datos Actualizados");
+        }catch(SQLException ex){
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-     
-     }
+    }
            
       public void Activar(Object dato[]){
        

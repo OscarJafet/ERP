@@ -175,34 +175,21 @@ public class LabActualizar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-       
-             if(!txfIDlaboratorio.getText().isEmpty() && !txfNombre.getText().isEmpty()){
-           Object dato[]=new Object[10];
-           dato[0]=Integer.parseInt(String.valueOf(txfIDlaboratorio.getText()));
-           dato[1]=String.valueOf(txfNombre.getText());
-           dato[2]=String.valueOf(txfOrigen.getText());
-           
-          
- 
-          try {
-                     la.actualizar(dato, cont.abreConexion());
-                     
-              } catch (ClassNotFoundException ex) {
-        
-                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
-    
-              }
-             }
-   
-       txfIDlaboratorio.setText(null);
-       txfNombre.setText(null);
-       txfOrigen.setText(null);
-       
-       
-
-
-
-
+              if(!txfNombre.getText().isEmpty()){            
+            Object dat[]= new Object[10];
+            dat[0]= String.valueOf(txfNombre.getText());
+            dat[1]= String.valueOf(txfOrigen.getText());
+            dat[2]= Integer.parseInt(String.valueOf(txfIDlaboratorio.getText()));
+            
+            try{
+                 la.actualiza(dat,cont.abreConexion());
+            }catch(Exception ex){
+                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane,"No se aceptan campos vacios");
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void MinimizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizaActionPerformed
