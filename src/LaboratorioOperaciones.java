@@ -124,19 +124,17 @@ public class LaboratorioOperaciones {
         }
     }
            
-      public void Activar(Object dato[]){
-       
- 
-        cadenaSQL="update laboratorios set estatus = "+dato[0]+" where idempaque="+dato[1];
-           
-        try {
-            stn.executeUpdate(cadenaSQL);
-            JOptionPane.showMessageDialog(null, "Empaque dado de Alta");
-        } catch (SQLException ex) {
+         public void Activa(Object datos[], Connection conect){
+                cadenaSQL= "update LABORATORIOS set estatus='A'"+"where nombre='"+datos[0]+"'";
+        
+        try{
+            stn= (java.sql.Statement) conect.createStatement();
+            rs=stn.executeQuery(cadenaSQL);
+            JOptionPane.showMessageDialog(null,"Laboratorio dado de Alta");
+        }catch(SQLException ex){
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-     
-     }
+    }
  
     
 }

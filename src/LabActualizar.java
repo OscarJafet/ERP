@@ -25,7 +25,7 @@ public class LabActualizar extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-     public void Datos(String a, String b,String c,String d){
+     public void Datos(String a, String b,String c){
            txfIDlaboratorio.setText(a);
            txfNombre.setText(b);
            txfOrigen.setText(c);

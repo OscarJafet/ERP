@@ -59,8 +59,11 @@ public class Menu extends javax.swing.JFrame {
         mbMenuprincipal = new javax.swing.JMenuBar();
         labo = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
         empaqueActualiza_activa = new javax.swing.JMenu();
         registrar_Empaque = new javax.swing.JMenuItem();
@@ -71,8 +74,11 @@ public class Menu extends javax.swing.JFrame {
         Actuva_actualiza_Empaque = new javax.swing.JMenuItem();
         MCategoria = new javax.swing.JMenu();
         miRegistraCategoria = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
         miConsulta = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
         miActualiza = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
         miEliminar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
 
@@ -155,6 +161,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         labo.add(jMenuItem3);
+        labo.add(jSeparator5);
 
         jMenuItem2.setText("Actualizar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +170,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         labo.add(jMenuItem2);
+        labo.add(jSeparator3);
 
         jMenuItem4.setText("Consultar");
         jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,8 +184,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         labo.add(jMenuItem4);
+        labo.add(jSeparator4);
 
-        jMenuItem5.setText("Eliminar");
+        jMenuItem5.setText("Altas y Bajas");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -244,6 +253,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         MCategoria.add(miRegistraCategoria);
+        MCategoria.add(jSeparator6);
 
         miConsulta.setText("Consultar");
         miConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +262,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         MCategoria.add(miConsulta);
+        MCategoria.add(jSeparator7);
 
         miActualiza.setText("Actualizar");
         miActualiza.addActionListener(new java.awt.event.ActionListener() {
@@ -260,6 +271,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         MCategoria.add(miActualiza);
+        MCategoria.add(jSeparator8);
 
         miEliminar.setText("Eliminar");
         miEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -509,6 +521,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JMenu labo;
     private javax.swing.JLabel lblLoginUser;
     private javax.swing.JLabel lblfecha;

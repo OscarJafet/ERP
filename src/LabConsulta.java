@@ -92,6 +92,11 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
                 return canEdit [columnIndex];
             }
         });
+        TablaLaboratorios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaLaboratoriosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaLaboratorios);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 465, 240));
@@ -190,6 +195,23 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
       }
 
     }//GEN-LAST:event_txfNombreKeyTyped
+
+    private void TablaLaboratoriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaLaboratoriosMouseClicked
+        a=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),0);
+        b=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),1);
+        c=(String) TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(),2);
+       
+        
+        LabActualizar ew= new LabActualizar();
+        ew.Datos(a, b,c); 
+        ew.setVisible(true);
+        dispose();
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_TablaLaboratoriosMouseClicked
 
     /**
      * @param args the command line arguments

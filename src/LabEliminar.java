@@ -137,8 +137,14 @@ public class LabEliminar extends javax.swing.JFrame {
         });
         getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 40, 20));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("Activar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesLogin/background.jpg"))); // NOI18N
@@ -206,6 +212,42 @@ public class LabEliminar extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
       }
     }//GEN-LAST:event_txfNombreKeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         
+            Object dat[]= new Object[10];
+        int valor= TablaLaboratorios.getSelectedRow();
+
+        if (valor!=-1){
+            txfNombre.setText(String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 1)).toString());
+            Object status;
+            status= String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 3).toString());
+
+            if( status.equals("B")){
+                dat[0]=String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 1).toString());
+
+                try{
+
+                    la.Activa(dat,cont.abreConexion());
+                    borrarTabla(TablaLaboratorios);
+                }catch(Exception ex){
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
+                }catch (Exception ex) {
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Seleccione un registro con baja");
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(null,"Debe Seleccuonar una fila");
+        }
+
+   
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
