@@ -73,7 +73,7 @@ public class Categoria extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Tabla1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 111, 404, 154));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 400, 154));
 
         btnRegresar.setText("<");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {

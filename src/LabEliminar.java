@@ -54,56 +54,33 @@ public class LabEliminar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         txfNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaLaboratorios = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         Minimiza = new javax.swing.JButton();
         regresa = new javax.swing.JButton();
         salir = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaLaboratorios = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txfNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfNombreKeyTyped(evt);
+            }
+        });
+        getContentPane().add(txfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 168, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre ");
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        Minimiza.setText("-");
-        Minimiza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MinimizaActionPerformed(evt);
-            }
-        });
-
-        regresa.setText("<");
-        regresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regresaActionPerformed(evt);
-            }
-        });
-
-        salir.setText("X");
-        salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 122, 30));
 
         TablaLaboratorios.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         TablaLaboratorios.setModel(new javax.swing.table.DefaultTableModel(
@@ -124,102 +101,57 @@ public class LabEliminar extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TablaLaboratorios);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Minimiza, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(regresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Minimiza, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(regresa, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 465, 290));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
+
+        Minimiza.setText("-");
+        Minimiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinimizaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Minimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 40, 20));
+
+        regresa.setText("<");
+        regresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(regresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 40, 20));
+
+        salir.setText("X");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 40, 20));
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton3.setText("Activar");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesLogin/background.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Object dat[]= new Object[10];
-            int valor= TablaLaboratorios.getSelectedRow();
-            
-            if (valor!=-1){
-                txfNombre.setText(String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 1)).toString());
-                Object status;
-                status= String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 3).toString());
-                
-                if( status.equals("A")){
-                    dat[0]=String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 1).toString());
-                  
-                    try{
-                        
-                        la.elimina(dat,cont.abreConexion());
-                        borrarTabla(TablaLaboratorios);
-                    }catch(Exception ex){
-                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                    try {
-                        la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
-                    }catch (Exception ex) {
-                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                }else{
-                    JOptionPane.showMessageDialog(null,"Seleccione un registro con baja");
-                }
-            
-            }else{
-                JOptionPane.showMessageDialog(null,"Debe Seleccuonar una fila");
-            } 
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void MinimizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizaActionPerformed
-        this.setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_MinimizaActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        cont.cerrarConexion();
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     private void regresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresaActionPerformed
         Menu m=new Menu();
@@ -228,10 +160,52 @@ public class LabEliminar extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_regresaActionPerformed
 
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        cont.cerrarConexion();
-        System.exit(0);
-    }//GEN-LAST:event_salirActionPerformed
+    private void MinimizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizaActionPerformed
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_MinimizaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Object dat[]= new Object[10];
+        int valor= TablaLaboratorios.getSelectedRow();
+
+        if (valor!=-1){
+            txfNombre.setText(String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 1)).toString());
+            Object status;
+            status= String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 3).toString());
+
+            if( status.equals("A")){
+                dat[0]=String.valueOf(TablaLaboratorios.getValueAt(TablaLaboratorios.getSelectedRow(), 1).toString());
+
+                try{
+
+                    la.elimina(dat,cont.abreConexion());
+                    borrarTabla(TablaLaboratorios);
+                }catch(Exception ex){
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
+                }catch (Exception ex) {
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Seleccione un registro con baja");
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(null,"Debe Seleccuonar una fila");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreKeyTyped
+   char Validar=evt.getKeyChar();
+      if(Character.isDigit(Validar)){
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
+      }
+    }//GEN-LAST:event_txfNombreKeyTyped
 
     /**
      * @param args the command line arguments
@@ -272,8 +246,9 @@ public class LabEliminar extends javax.swing.JFrame {
     private javax.swing.JButton Minimiza;
     private javax.swing.JTable TablaLaboratorios;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton regresa;
     private javax.swing.JButton salir;
