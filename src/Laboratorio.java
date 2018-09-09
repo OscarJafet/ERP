@@ -181,7 +181,7 @@ public class Laboratorio extends javax.swing.JFrame {
            dato[0]=Integer.parseInt(String.valueOf(txfIDlaboratorio.getText()));
            dato[1]=String.valueOf(txfNombre.getText());
            dato[2]=String.valueOf(txfOrigen.getText());
-           dato[2]="'A'";
+           dato[3]="'A'";
           
  
           try {
@@ -189,7 +189,7 @@ public class Laboratorio extends javax.swing.JFrame {
               
               } catch (ClassNotFoundException ex) {
         
-                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                  Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     
               }
              }
