@@ -1,5 +1,4 @@
 
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,10 +17,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author gavil
+ * @author je_mg
  */
-public class LaboratorioOperaciones {
-    
+public class Operaciones_UnidadMEdida {
     
      Statement stn;
       static ResultSet rs = null;
@@ -29,10 +27,10 @@ public class LaboratorioOperaciones {
      static String cadenaSQL;
 
      
-    public void consultaTodosLaboratorios(JTable tabla, Connection con){
+    public void consultaTodosUnidadMedida(JTable tabla, Connection con){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select * from laboratorios";
+        cadenaSQL="select IDUNIDAD,NOMBRE,SIGLAS,ESTATUS from UNIDADMEDIDA";
            
         try {
             stn=(java.sql.Statement) con.createStatement();
@@ -40,10 +38,11 @@ public class LaboratorioOperaciones {
         
             while(rs.next()){
                 
-                 String X=rs.getString("IDLABORATORIO");
+                 String X=rs.getString("IDUNIDAD");
                    String Y=rs.getString("NOMBRE");
-                     String A=rs.getString("ORIGEN");
+                     String A=rs.getString("SIGLAS");
                       String J=rs.getString("ESTATUS");
+                      
                        
                 Object datosRenglon[]={X,Y,A,J};
                 tablaTemp.addRow(datosRenglon);
@@ -58,7 +57,7 @@ public class LaboratorioOperaciones {
     public void consultaEspecifica(JTable tabla, Connection con,Object dato[]){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select * from laboratorios where nombre='"+dato[0]+"'";
+        cadenaSQL="select * from unidadmedida where nombre='"+dato[0]+"'";
            
         try {
             stn=(java.sql.Statement) con.createStatement();
@@ -66,11 +65,12 @@ public class LaboratorioOperaciones {
         
             while(rs.next()){
                 
-                 String X=rs.getString("IDLABORATORIO");
+                 String X=rs.getString("IDUNIDAD");
                    String Y=rs.getString("NOMBRE");
-                     String A=rs.getString("ORIGEN");
+                     String A=rs.getString("SIGLAS");
                       String J=rs.getString("ESTATUS");
-                      
+                          
+                       
                 Object datosRenglon[]={X,Y,A,J};
                 tablaTemp.addRow(datosRenglon);
             }
@@ -83,60 +83,48 @@ public class LaboratorioOperaciones {
       
       
  
-      public void insertalAB(Object datos[],Connection con){
+      public void insertaUnidad(Object datos[]){
        
-     cadenaSQL="insert into laboratorios values(" +  datos[0]+",'" + datos[1]+"','"
-             +datos[2]+"',"  +datos[3]+ ")";
+     cadenaSQL="insert into unidadmedida values(" +  datos[0]+",'" + datos[1]+"','"
+             +  datos[2]+"'," + datos[3]+")";
         try {
-            stn=(java.sql.Statement) con.createStatement();
-            rs=stn.executeQuery(cadenaSQL);
-        
+            stn.executeUpdate(cadenaSQL);
             JOptionPane.showMessageDialog(null, "Datos Ingresados");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Laboratorio  existente");
+            JOptionPane.showMessageDialog(null, "Unidad existente");
 //            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
      
     }
       
-         public void elimina (Object datos[], Connection conect){
-                cadenaSQL= "update LABORATORIOS set estatus='B'"+"where nombre='"+datos[0]+"'";
-        
-        try{
-            stn= (java.sql.Statement) conect.createStatement();
-            rs=stn.executeQuery(cadenaSQL);
-            JOptionPane.showMessageDialog(null,"Laboratorio dado de baja");
-        }catch(SQLException ex){
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-       public void actualiza(Object datos[], Connection conect){
-        
-        cadenaSQL= "update LABORATORIOS set nombre='"+datos[0]+"',ORIGEN='"+datos[1]+"'where IDLABORATORIO="+datos[2];
-        
-        try{
-            stn= (java.sql.Statement) conect.createStatement();
-            rs=stn.executeQuery(cadenaSQL);
-            JOptionPane.showMessageDialog(null,"Datos Actualizados");
-        }catch(SQLException ex){
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-           
-      public void Activar(Object dato[]){
+         public void Baja(Object dato[]){
        
  
-        cadenaSQL="update laboratorios set estatus = "+dato[0]+" where idempaque="+dato[1];
+        cadenaSQL="update unidadmedida set estatus = "+dato[0]+" where idunidad="+dato[1];
            
         try {
             stn.executeUpdate(cadenaSQL);
-            JOptionPane.showMessageDialog(null, "Empaque dado de Alta");
+            JOptionPane.showMessageDialog(null, "Unidad dada de baja");
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
      
      }
+       
+         
+           
+      public void Activar(Object dato[]){
+       
  
-    
+        cadenaSQL="update unidadmedida set estatus = "+dato[0]+" where idunidad="+dato[1];
+           
+        try {
+            stn.executeUpdate(cadenaSQL);
+            JOptionPane.showMessageDialog(null, 
+                    "Unidad dada de Alta");
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+     }  
 }

@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author je_mg
  */
-public class Empaque extends javax.swing.JFrame {
+public class EmpaqueOrigin extends javax.swing.JFrame {
 Conexion con;
 EmpaqueOperaciones em=new EmpaqueOperaciones();
 
@@ -26,7 +26,7 @@ String Username;
     /**
      * Creates new form Empaque
      */
-    public Empaque() {
+    public EmpaqueOrigin() {
         initComponents();
            setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
@@ -36,18 +36,17 @@ String Username;
        MEDIDAUNI.setEnabled(false);
        btnaction1.setEnabled(false);
         btnaction.setEnabled(false);
-        Clave1.setEnabled(false);
        nombre1.setEnabled(false);
         btnaction2.setEnabled(false);
          CantidadActualizar.setEnabled(false);
     try {
         con.abreConexion();
         em.consultaregistroE(MEDIDAUNI, con.abreConexion());
-        em.consultaTodosEmpaque(tablabaja, con.abreConexion());
-          em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
-         em.consultaTodosEmpaque(jTable2, con.abreConexion());
+        em.consultaTodosEmpaque(tablaconsultaybaja, con.abreConexion());
+          em.consultaTodosEmpaque(tablaactualiza, con.abreConexion());
+         em.consultaTodosEmpaque(tablageneral, con.abreConexion());
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
 
@@ -66,10 +65,8 @@ String Username;
         jTabbedPane1 = new javax.swing.JTabbedPane();
         consultageneral = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablabaja = new javax.swing.JTable();
+        tablaconsultaybaja = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        Clave1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         nombre1 = new javax.swing.JTextField();
         btnaction1 = new javax.swing.JButton();
@@ -92,11 +89,11 @@ String Username;
         jLabel3 = new javax.swing.JLabel();
         consultayelimina = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablageneral = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         Actualizaciones = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tablabaja1 = new javax.swing.JTable();
+        tablaactualiza = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         CantidadActualizar = new javax.swing.JTextField();
@@ -120,8 +117,8 @@ String Username;
 
         consultageneral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablabaja.setBackground(new java.awt.Color(102, 153, 255));
-        tablabaja.setModel(new javax.swing.table.DefaultTableModel(
+        tablaconsultaybaja.setBackground(new java.awt.Color(102, 153, 255));
+        tablaconsultaybaja.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -137,33 +134,18 @@ String Username;
                 return canEdit [columnIndex];
             }
         });
-        tablabaja.setSelectionForeground(new java.awt.Color(153, 255, 153));
-        jScrollPane1.setViewportView(tablabaja);
+        tablaconsultaybaja.setSelectionForeground(new java.awt.Color(153, 255, 153));
+        jScrollPane1.setViewportView(tablaconsultaybaja);
 
         consultageneral.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 530, 260));
 
         jPanel3.setLayout(null);
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Clave");
-        jPanel3.add(jLabel8);
-        jLabel8.setBounds(10, 10, 32, 15);
-
-        Clave1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Clave1KeyTyped(evt);
-            }
-        });
-        jPanel3.add(Clave1);
-        Clave1.setBounds(50, 10, 180, 30);
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Nombre");
         jPanel3.add(jLabel9);
-        jLabel9.setBounds(0, 60, 47, 15);
+        jLabel9.setBounds(0, 20, 47, 15);
 
         nombre1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -171,7 +153,7 @@ String Username;
             }
         });
         jPanel3.add(nombre1);
-        nombre1.setBounds(50, 50, 180, 30);
+        nombre1.setBounds(60, 10, 180, 30);
 
         btnaction1.setText("Action");
         btnaction1.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +208,7 @@ String Username;
 
             },
             new String [] {
-                "Nombre", "ID"
+                "ID", "Nombre"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -310,8 +292,8 @@ String Username;
 
         consultayelimina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setBackground(new java.awt.Color(102, 153, 255));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablageneral.setBackground(new java.awt.Color(102, 153, 255));
+        tablageneral.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -327,8 +309,8 @@ String Username;
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setSelectionForeground(new java.awt.Color(153, 255, 153));
-        jScrollPane3.setViewportView(jTable2);
+        tablageneral.setSelectionForeground(new java.awt.Color(153, 255, 153));
+        jScrollPane3.setViewportView(tablageneral);
 
         consultayelimina.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 540, 330));
 
@@ -339,8 +321,8 @@ String Username;
 
         Actualizaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablabaja1.setBackground(new java.awt.Color(102, 153, 255));
-        tablabaja1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaactualiza.setBackground(new java.awt.Color(102, 153, 255));
+        tablaactualiza.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -356,8 +338,8 @@ String Username;
                 return canEdit [columnIndex];
             }
         });
-        tablabaja1.setSelectionForeground(new java.awt.Color(153, 255, 153));
-        jScrollPane4.setViewportView(tablabaja1);
+        tablaactualiza.setSelectionForeground(new java.awt.Color(153, 255, 153));
+        jScrollPane4.setViewportView(tablaactualiza);
 
         Actualizaciones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 530, 260));
 
@@ -495,7 +477,6 @@ String Username;
         btnaction.setText(registrar.getText());
     btnaction1.setText("Action");
       btnaction2.setText("Action");
-           Clave1.setEnabled(false);
        nombre1.setEnabled(false);
        btnaction1.setEnabled(false);
         btnaction2.setEnabled(false);
@@ -517,20 +498,20 @@ String Username;
            dato[4]=Integer.parseInt(String.valueOf(MEDIDAUNI.getValueAt(MEDIDAUNI.getSelectedRow(), 0)));
           
            em.insertaEmpaque(dato);
-              borraT(tablabaja);
-         borraT(tablabaja1);
-              borraT(jTable2);
+              borraT(tablaconsultaybaja);
+         borraT(tablaactualiza);
+              borraT(tablageneral);
             
               try {
        
-                  em.consultaTodosEmpaque(tablabaja, con.abreConexion());
+                  em.consultaTodosEmpaque(tablaconsultaybaja, con.abreConexion());
         
-                  em.consultaTodosEmpaque(jTable2, con.abreConexion());
+                  em.consultaTodosEmpaque(tablageneral, con.abreConexion());
     
-                   em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
+                   em.consultaTodosEmpaque(tablaactualiza, con.abreConexion());
               } catch (ClassNotFoundException ex) {
         
-                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                  Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     
               }
        
@@ -542,7 +523,7 @@ String Username;
        nombre.setText(null);
        Cantidad.setText(null);
        
-       Clave1.setText(null);
+    
        nombre1.setText(null);   
        }
     }//GEN-LAST:event_btnactionActionPerformed
@@ -559,21 +540,21 @@ String Username;
        nombre.setEnabled(false);
        Cantidad.setEnabled(false);
        MEDIDAUNI.setEnabled(false);
-       Clave1.setEnabled(false);
+     
        nombre1.setEnabled(false);
     }//GEN-LAST:event_eliminar1ActionPerformed
 
     private void btnaction1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaction1ActionPerformed
   if(consulta.isSelected()){
-       if(!Clave1.getText().isEmpty() && !nombre1.getText().isEmpty()){
+       if(!nombre1.getText().isEmpty()){
            Object dato[]=new Object[10];
-           dato[1]=Integer.parseInt(String.valueOf(Clave1.getText()));
+        
            dato[0]=String.valueOf(nombre1.getText());
                try {
-                   borraT(tablabaja);
-                   em.consultaEspecifica(tablabaja, con.abreConexion(), dato);
+                   borraT(tablaconsultaybaja);
+                   em.consultaEspecifica(tablaconsultaybaja, con.abreConexion(), dato);
                } catch (ClassNotFoundException ex) {
-                   Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                   Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                }
            }else{
               JOptionPane.showConfirmDialog(null, "Minimo ingresa Clave y nombre");
@@ -583,34 +564,34 @@ String Username;
        Clave.setText(null);
        nombre.setText(null);
        Cantidad.setText(null);
-       Clave1.setText(null);
+  
        nombre1.setText(null);   
        }else if(eliminar1.isSelected()){
             Object dato[]=new Object[10];
             dato[0]="'B'";
-            int a= tablabaja.getSelectedRow();
+            int a= tablaconsultaybaja.getSelectedRow();
           
             if(a!=-1 ){
                       Object p;
-            p= String.valueOf(tablabaja.getValueAt(tablabaja.getSelectedRow(), 3).toString());
+            p= String.valueOf(tablaconsultaybaja.getValueAt(tablaconsultaybaja.getSelectedRow(), 3).toString());
             
                     if( p.equals("A")){
-           dato[1]=Integer.parseInt(String.valueOf(tablabaja.getValueAt(tablabaja.getSelectedRow(), 0)));
+           dato[1]=Integer.parseInt(String.valueOf(tablaconsultaybaja.getValueAt(tablaconsultaybaja.getSelectedRow(), 0)));
           em.BajaEmpaque(dato);
-           borraT(tablabaja);
-         borraT(tablabaja1);
-              borraT(jTable2);
+           borraT(tablaconsultaybaja);
+         borraT(tablaactualiza);
+              borraT(tablageneral);
             
               try {
        
-                  em.consultaTodosEmpaque(tablabaja, con.abreConexion());
+                  em.consultaTodosEmpaque(tablaconsultaybaja, con.abreConexion());
         
-                  em.consultaTodosEmpaque(jTable2, con.abreConexion());
+                  em.consultaTodosEmpaque(tablageneral, con.abreConexion());
     
-                   em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
+                   em.consultaTodosEmpaque(tablaactualiza, con.abreConexion());
               } catch (ClassNotFoundException ex) {
         
-                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                  Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     
               }
             }else{ JOptionPane.showConfirmDialog(null, "Selecione un renglon de Alta");   }
@@ -624,20 +605,11 @@ String Username;
        nombre.setText(null);
        Cantidad.setText(null);
        
-       Clave1.setText(null);
+     
        nombre1.setText(null);   
      }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnaction1ActionPerformed
-
-    private void Clave1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Clave1KeyTyped
-         char Validar=evt.getKeyChar();
-      if(Character.isLetter(Validar)){
-      getToolkit().beep();
-      evt.consume();
-          JOptionPane.showConfirmDialog(rootPane, "Ingrese solo numeros");
-      }
-    }//GEN-LAST:event_Clave1KeyTyped
 public void borraT(JTable tbl){
 DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     for (int i = tam.getRowCount()-1; i >=0; i--) {
@@ -661,7 +633,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
        nombre.setEnabled(false);
        Cantidad.setEnabled(false);
        MEDIDAUNI.setEnabled(false);
-       Clave1.setEnabled(true);
        nombre1.setEnabled(true);
         btnaction2.setEnabled(false);
     }//GEN-LAST:event_consultaActionPerformed
@@ -687,29 +658,29 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
  if(activa.isSelected()){
             Object dato[]=new Object[10];
             dato[0]="'A'";
-            int a= tablabaja1.getSelectedRow();
+            int a= tablaactualiza.getSelectedRow();
            if(a!=-1 ){
                  Object p;
-                   p= String.valueOf(tablabaja1.getValueAt(tablabaja1.getSelectedRow(), 3).toString());
+                   p= String.valueOf(tablaactualiza.getValueAt(tablaactualiza.getSelectedRow(), 3).toString());
 
                if( p.equals("B")){
                 
             
-           dato[1]=Integer.parseInt(String.valueOf(tablabaja1.getValueAt(tablabaja1.getSelectedRow(), 0)));
+           dato[1]=Integer.parseInt(String.valueOf(tablaactualiza.getValueAt(tablaactualiza.getSelectedRow(), 0)));
           em.Activar(dato);
-           borraT(tablabaja);
-                   borraT(tablabaja1);
-              borraT(jTable2);
+           borraT(tablaconsultaybaja);
+                   borraT(tablaactualiza);
+              borraT(tablageneral);
             
               try {
        
-                  em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
-                      em.consultaTodosEmpaque(tablabaja, con.abreConexion());
-                  em.consultaTodosEmpaque(jTable2, con.abreConexion());
+                  em.consultaTodosEmpaque(tablaactualiza, con.abreConexion());
+                      em.consultaTodosEmpaque(tablaconsultaybaja, con.abreConexion());
+                  em.consultaTodosEmpaque(tablageneral, con.abreConexion());
     
               } catch (ClassNotFoundException ex) {
         
-                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+    
     
                                                    }
                }else{ JOptionPane.showConfirmDialog(null, "Selecione un renglon de Baja");   }
@@ -722,33 +693,32 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
        nombre.setText(null);
        Cantidad.setText(null);
        
-       Clave1.setText(null);
        nombre1.setText(null);   
      }else if(actualiza.isSelected()){
         Object dato[]=new Object[10];
         
-            int a= tablabaja1.getSelectedRow();
+            int a= tablaactualiza.getSelectedRow();
            if(a!=-1 ){
                
 
                if(!CantidadActualizar.getText().isEmpty()){
                     dato[0]=Integer.parseInt(String.valueOf(CantidadActualizar.getText().toString()));
             
-           dato[1]=Integer.parseInt(String.valueOf(tablabaja1.getValueAt(tablabaja1.getSelectedRow(), 0)));
+           dato[1]=Integer.parseInt(String.valueOf(tablaactualiza.getValueAt(tablaactualiza.getSelectedRow(), 0)));
           em.actualizarCantidad(dato);
-           borraT(tablabaja);
-                   borraT(tablabaja1);
-              borraT(jTable2);
+           borraT(tablaconsultaybaja);
+                   borraT(tablaactualiza);
+              borraT(tablageneral);
             
               try {
        
-                  em.consultaTodosEmpaque(tablabaja1, con.abreConexion());
-                      em.consultaTodosEmpaque(tablabaja, con.abreConexion());
-                  em.consultaTodosEmpaque(jTable2, con.abreConexion());
+                  em.consultaTodosEmpaque(tablaactualiza, con.abreConexion());
+                      em.consultaTodosEmpaque(tablaconsultaybaja, con.abreConexion());
+                  em.consultaTodosEmpaque(tablageneral, con.abreConexion());
     
               } catch (ClassNotFoundException ex) {
         
-                  Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                  Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     
                                                    }
                }else{ JOptionPane.showMessageDialog(null, "ingrese un valor");   }
@@ -759,7 +729,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
        nombre.setText(null);
        Cantidad.setText(null);
        
-       Clave1.setText(null);
        nombre1.setText(null);   
            }
            
@@ -769,7 +738,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
       btnaction2.setText(actualiza.getText());
     btnaction1.setText("Action");
     btnaction.setText("Action");
-           Clave1.setEnabled(false);
        nombre1.setEnabled(false);
         btnaction2.setEnabled(true);
        btnaction1.setEnabled(false);
@@ -786,7 +754,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
        btnaction2.setText(activa.getText());
     btnaction1.setText("Action");
     btnaction.setText("Action");
-           Clave1.setEnabled(false);
        nombre1.setEnabled(false);
         btnaction2.setEnabled(true);
        btnaction1.setEnabled(false);
@@ -816,20 +783,20 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Empaque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpaqueOrigin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Empaque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpaqueOrigin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Empaque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpaqueOrigin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Empaque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmpaqueOrigin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Empaque().setVisible(true);
+                new EmpaqueOrigin().setVisible(true);
             }
         });
     }
@@ -839,7 +806,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     private javax.swing.JTextField Cantidad;
     private javax.swing.JTextField CantidadActualizar;
     private javax.swing.JTextField Clave;
-    private javax.swing.JTextField Clave1;
     private javax.swing.JTable MEDIDAUNI;
     private javax.swing.JButton Minimiza;
     private javax.swing.JRadioButton activa;
@@ -865,7 +831,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -874,7 +839,6 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField nombre1;
@@ -882,7 +846,8 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
     private javax.swing.JPanel registro;
     private javax.swing.JButton regresa;
     private javax.swing.JButton salir;
-    private javax.swing.JTable tablabaja;
-    private javax.swing.JTable tablabaja1;
+    private javax.swing.JTable tablaactualiza;
+    private javax.swing.JTable tablaconsultaybaja;
+    private javax.swing.JTable tablageneral;
     // End of variables declaration//GEN-END:variables
 }

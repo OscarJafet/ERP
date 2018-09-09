@@ -30,7 +30,7 @@ public class LabEliminar extends javax.swing.JFrame {
         cont.abreConexion();
         la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     }
 
     }
@@ -199,12 +199,12 @@ public class LabEliminar extends javax.swing.JFrame {
                         la.elimina(dat,cont.abreConexion());
                         borrarTabla(TablaLaboratorios);
                     }catch(Exception ex){
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     try {
                         la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
                     }catch (Exception ex) {
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 }else{
                     JOptionPane.showMessageDialog(null,"Seleccione un registro con baja");

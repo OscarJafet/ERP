@@ -29,7 +29,7 @@ public class RegistrarCategoria extends javax.swing.JFrame {
           try{
               conect.abreConexion();
           } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     }  
           setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
@@ -138,7 +138,7 @@ public class RegistrarCategoria extends javax.swing.JFrame {
             try{
                  ca.inserta(dat,conect.abreConexion());
             }catch(Exception ex){
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
         else{

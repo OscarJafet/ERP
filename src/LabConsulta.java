@@ -34,7 +34,7 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
         cont.abreConexion();
         la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
 
@@ -189,7 +189,7 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
                     la.consultaEspecifica(TablaLaboratorios,cont.abreConexion(), dat);
                 
                 }catch(Exception ex){
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
                 JOptionPane.showConfirmDialog(null, "Debes ingresar el Nombre");

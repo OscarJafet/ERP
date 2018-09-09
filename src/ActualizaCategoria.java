@@ -29,7 +29,7 @@ public class ActualizaCategoria extends javax.swing.JFrame {
                   try{
               conect.abreConexion();
           } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     }  
           setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
@@ -142,7 +142,7 @@ public class ActualizaCategoria extends javax.swing.JFrame {
             try{
                  ca.actualiza(dat,conect.abreConexion());
             }catch(Exception ex){
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
         else{

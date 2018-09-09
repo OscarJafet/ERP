@@ -33,7 +33,7 @@ public class Categoria extends javax.swing.JFrame {
         conect.abreConexion();
         ca.ConsultaGeneral(Tabla1, conect.abreConexion());
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
 
@@ -209,7 +209,7 @@ public class Categoria extends javax.swing.JFrame {
                     ca.ConsultaEspecifica(Tabla1,conect.abreConexion(), dat);
                 
                 }catch(Exception ex){
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
                 JOptionPane.showConfirmDialog(null, "Debes ingresar el Nombre");
@@ -250,12 +250,12 @@ public class Categoria extends javax.swing.JFrame {
                         ca.elimina(dat,conect.abreConexion());
                         borrarTabla(Tabla1);
                     }catch(Exception ex){
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     try {
                         ca.ConsultaGeneral(Tabla1, conect.abreConexion());
                     }catch (Exception ex) {
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 }else{
                     JOptionPane.showMessageDialog(null,"Seleccione un registro con baja");

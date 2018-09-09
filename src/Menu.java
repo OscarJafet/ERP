@@ -60,8 +60,15 @@ String usuario;
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        empaque = new javax.swing.JMenu();
+        empaqueActualiza_activa = new javax.swing.JMenu();
+        registrar_Empaque = new javax.swing.JMenuItem();
+        consulta_baja_Empaque = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        listageneralEmpaque = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        Actuva_actualiza_Empaque = new javax.swing.JMenuItem();
         MCategoria = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -174,13 +181,53 @@ String usuario;
 
         mbMenuprincipal.add(labo);
 
-        empaque.setText("Empaque");
-        empaque.addMouseListener(new java.awt.event.MouseAdapter() {
+        empaqueActualiza_activa.setText("Empaque");
+        empaqueActualiza_activa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                empaqueMouseClicked(evt);
+                empaqueActualiza_activaMouseClicked(evt);
             }
         });
-        mbMenuprincipal.add(empaque);
+        empaqueActualiza_activa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empaqueActualiza_activaActionPerformed(evt);
+            }
+        });
+
+        registrar_Empaque.setText("Registrar");
+        registrar_Empaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrar_EmpaqueActionPerformed(evt);
+            }
+        });
+        empaqueActualiza_activa.add(registrar_Empaque);
+
+        consulta_baja_Empaque.setText("Consulta y Baja");
+        consulta_baja_Empaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consulta_baja_EmpaqueActionPerformed(evt);
+            }
+        });
+        empaqueActualiza_activa.add(consulta_baja_Empaque);
+        empaqueActualiza_activa.add(jSeparator1);
+
+        listageneralEmpaque.setText("ListaGeneral");
+        listageneralEmpaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listageneralEmpaqueActionPerformed(evt);
+            }
+        });
+        empaqueActualiza_activa.add(listageneralEmpaque);
+        empaqueActualiza_activa.add(jSeparator2);
+
+        Actuva_actualiza_Empaque.setText("Actualizar cantidad y Activar Empaque");
+        Actuva_actualiza_Empaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Actuva_actualiza_EmpaqueActionPerformed(evt);
+            }
+        });
+        empaqueActualiza_activa.add(Actuva_actualiza_Empaque);
+
+        mbMenuprincipal.add(empaqueActualiza_activa);
 
         MCategoria.setText("Categoria");
         MCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,6 +236,14 @@ String usuario;
             }
         });
         mbMenuprincipal.add(MCategoria);
+
+        jMenu1.setText("Unidad De Medida");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        mbMenuprincipal.add(jMenu1);
 
         setJMenuBar(mbMenuprincipal);
 
@@ -234,13 +289,13 @@ String usuario;
        
     }//GEN-LAST:event_laboFocusGained
 
-    private void empaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empaqueMouseClicked
-       Empaque e=new Empaque();
-        e.setVisible(true);
-        e.Username=usuario;
-        dispose();
-       
-    }//GEN-LAST:event_empaqueMouseClicked
+    private void empaqueActualiza_activaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empaqueActualiza_activaMouseClicked
+//       Empaque e=new Empaque();
+//        e.setVisible(true);
+//        e.Username=usuario;
+//        dispose();
+//       
+    }//GEN-LAST:event_empaqueActualiza_activaMouseClicked
 
     private void regresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresaActionPerformed
         Login m=new Login();
@@ -306,6 +361,49 @@ String usuario;
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+ Unidad_Medida m=new Unidad_Medida();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void registrar_EmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_EmpaqueActionPerformed
+       EmpaqueRegistra m=new EmpaqueRegistra();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+    }//GEN-LAST:event_registrar_EmpaqueActionPerformed
+
+    private void consulta_baja_EmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consulta_baja_EmpaqueActionPerformed
+        EmpaqueConsultaBaja m=new EmpaqueConsultaBaja();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+    }//GEN-LAST:event_consulta_baja_EmpaqueActionPerformed
+
+    private void listageneralEmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listageneralEmpaqueActionPerformed
+          ListaGeneralEmpaque m=new ListaGeneralEmpaque();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+
+    }//GEN-LAST:event_listageneralEmpaqueActionPerformed
+
+    private void empaqueActualiza_activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empaqueActualiza_activaActionPerformed
+        EmpaqueActualizayactiva m=new EmpaqueActualizayactiva();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+    }//GEN-LAST:event_empaqueActualiza_activaActionPerformed
+
+    private void Actuva_actualiza_EmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actuva_actualiza_EmpaqueActionPerformed
+          EmpaqueActualizayactiva m=new EmpaqueActualizayactiva();
+        m.setVisible(true);
+        m.Username=usuario;
+        dispose();
+    }//GEN-LAST:event_Actuva_actualiza_EmpaqueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,21 +440,28 @@ String usuario;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Actuva_actualiza_Empaque;
     private javax.swing.JMenu MCategoria;
     private javax.swing.JButton Minimiza;
-    private javax.swing.JMenu empaque;
+    private javax.swing.JMenuItem consulta_baja_Empaque;
+    private javax.swing.JMenu empaqueActualiza_activa;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenu labo;
     private javax.swing.JLabel lblLoginUser;
     private javax.swing.JLabel lblfecha;
     private javax.swing.JLabel lblhora;
+    private javax.swing.JMenuItem listageneralEmpaque;
     private javax.swing.JMenuBar mbMenuprincipal;
+    private javax.swing.JMenuItem registrar_Empaque;
     private javax.swing.JButton regresa;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables

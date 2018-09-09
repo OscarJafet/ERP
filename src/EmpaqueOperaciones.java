@@ -31,7 +31,8 @@ public class EmpaqueOperaciones {
     public void consultaTodosEmpaque(JTable tabla, Connection con){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select em.IDEMPAQUE,em.NOMBRE,em.CAPACIDAD,em.ESTATUS,uni.NOMBRE as nomm from empaques em, unidadmedida uni";
+        cadenaSQL="select em.IDEMPAQUE,em.NOMBRE,em.CAPACIDAD,em.ESTATUS,uni.NOMBRE as nomm from empaques em, unidadmedida uni"
+                + " where em.idunidad= uni.idunidad";
            
         try {
             stn=(java.sql.Statement) con.createStatement();
@@ -58,7 +59,8 @@ public class EmpaqueOperaciones {
     public void consultaEspecifica(JTable tabla, Connection con,Object dato[]){
        
         DefaultTableModel tablaTemp = (DefaultTableModel) tabla.getModel();
-        cadenaSQL="select em.IDEMPAQUE,em.NOMBRE,em.CAPACIDAD,em.ESTATUS,uni.NOMBRE as nomm from empaques em, unidadmedida uni where em.nombre='"+dato[0]+"' and em.IDEMPAQUE= "+dato[1];
+        cadenaSQL="select em.IDEMPAQUE,em.NOMBRE,em.CAPACIDAD,em.ESTATUS,uni.NOMBRE as nomm from empaques em, unidadmedida uni where em.nombre='"+dato[0]+"' and "
+                + " em.idunidad= uni.idunidad";
            
         try {
             stn=(java.sql.Statement) con.createStatement();

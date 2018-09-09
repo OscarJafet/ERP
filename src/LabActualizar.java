@@ -184,7 +184,7 @@ public class LabActualizar extends javax.swing.JFrame {
             try{
                  la.actualiza(dat,cont.abreConexion());
             }catch(Exception ex){
-                    Logger.getLogger(Empaque.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
         else{
