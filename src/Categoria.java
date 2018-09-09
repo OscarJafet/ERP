@@ -98,6 +98,12 @@ public class Categoria extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 0, -1, -1));
+
+        txfNombreCon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfNombreConKeyTyped(evt);
+            }
+        });
         getContentPane().add(txfNombreCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 71, 178, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -158,6 +164,15 @@ public class Categoria extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, "Debes ingresar el Nombre");
         }
     }//GEN-LAST:event_btnConsultaEsActionPerformed
+
+    private void txfNombreConKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreConKeyTyped
+      char Validar=evt.getKeyChar();
+      if(Character.isDigit(Validar)){
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
+      }
+    }//GEN-LAST:event_txfNombreConKeyTyped
 
     public void borrarTabla(JTable tabla) {
         DefaultTableModel tamblatem = (DefaultTableModel) tabla.getModel();

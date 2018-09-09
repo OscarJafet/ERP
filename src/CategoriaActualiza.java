@@ -71,6 +71,12 @@ public class CategoriaActualiza extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, -1, -1));
+
+        txfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfNombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(txfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 62, 186, -1));
 
         btnConfirmar.setText("Actualizar");
@@ -168,6 +174,15 @@ public class CategoriaActualiza extends javax.swing.JFrame {
     private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_btnMinimizarActionPerformed
+
+    private void txfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreKeyTyped
+      char Validar=evt.getKeyChar();
+      if(Character.isDigit(Validar)){
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
+      }
+    }//GEN-LAST:event_txfNombreKeyTyped
 
             public void borrarTabla(JTable tabla){
         DefaultTableModel tamblatem=(DefaultTableModel)tabla.getModel();

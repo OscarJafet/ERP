@@ -31,7 +31,7 @@ public class CategoriaRegistrar extends javax.swing.JFrame {
           } catch (ClassNotFoundException ex) {
         Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
     }  
-          setIconImage(new ImageIcon(getClass().getResource("/iconoSW/icono.jpg")).getImage());
+          setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
     }
 
@@ -78,7 +78,19 @@ public class CategoriaRegistrar extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        txfCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfCategoriaKeyTyped(evt);
+            }
+        });
         getContentPane().add(txfCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 179, -1));
+
+        txfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfNombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(txfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 179, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -149,6 +161,24 @@ public class CategoriaRegistrar extends javax.swing.JFrame {
     private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
            this.setExtendedState(ICONIFIED); 
     }//GEN-LAST:event_btnMinimizarActionPerformed
+
+    private void txfCategoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfCategoriaKeyTyped
+      char Validar=evt.getKeyChar();
+      if(Character.isLetter(Validar)){
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane, "Ingrese solo numeros");
+      }
+    }//GEN-LAST:event_txfCategoriaKeyTyped
+
+    private void txfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreKeyTyped
+      char Validar=evt.getKeyChar();
+      if(Character.isDigit(Validar)){
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
+      } 
+    }//GEN-LAST:event_txfNombreKeyTyped
 
     /**
      * @param args the command line arguments

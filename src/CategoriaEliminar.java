@@ -27,7 +27,7 @@ public class CategoriaEliminar extends javax.swing.JFrame {
     public CategoriaEliminar() {
         initComponents();
         
-         setIconImage(new ImageIcon(getClass().getResource("/iconoSW/icono.jpg")).getImage());
+         setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
           this.setLocationRelativeTo(null);
           
               try {
@@ -72,6 +72,12 @@ public class CategoriaEliminar extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, -1, -1));
+
+        txfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txfNombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(txfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 64, 170, -1));
 
         Tabla1.setModel(new javax.swing.table.DefaultTableModel(
@@ -173,6 +179,15 @@ public class CategoriaEliminar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Debe Seleccuonar una fila");
             }        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreKeyTyped
+      char Validar=evt.getKeyChar();
+      if(Character.isDigit(Validar)){
+      getToolkit().beep();
+      evt.consume();
+          JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
+      }        
+    }//GEN-LAST:event_txfNombreKeyTyped
 
         public void borrarTabla(JTable tabla){
         DefaultTableModel tamblatem=(DefaultTableModel)tabla.getModel();
