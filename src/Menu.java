@@ -1,6 +1,6 @@
 
 import java.util.Calendar;
-import java.util.Date ;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,24 +16,26 @@ import javax.swing.ImageIcon;
  * @author je_mg
  */
 public class Menu extends javax.swing.JFrame {
-Conexion con;
-String usuario;
+
+    Conexion con;
+    String usuario;
+
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
-           setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
-         this.setLocationRelativeTo(null);
-         //this.setExtendedState(MAXIMIZED_BOTH);
-      jPanel1.setLocation(0,0);
-         
-         try {
+        setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
         this.setLocationRelativeTo(null);
-        con.abreConexion();
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        //this.setExtendedState(MAXIMIZED_BOTH);
+        jPanel1.setLocation(0, 0);
+
+        try {
+            this.setLocationRelativeTo(null);
+            con.abreConexion();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -68,6 +70,10 @@ String usuario;
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         Actuva_actualiza_Empaque = new javax.swing.JMenuItem();
         MCategoria = new javax.swing.JMenu();
+        miRegistraCategoria = new javax.swing.JMenuItem();
+        miConsulta = new javax.swing.JMenuItem();
+        miActualiza = new javax.swing.JMenuItem();
+        miEliminar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -230,11 +236,39 @@ String usuario;
         mbMenuprincipal.add(empaqueActualiza_activa);
 
         MCategoria.setText("Categoria");
-        MCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MCategoriaMouseClicked(evt);
+
+        miRegistraCategoria.setText("Registrar");
+        miRegistraCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miRegistraCategoriaActionPerformed(evt);
             }
         });
+        MCategoria.add(miRegistraCategoria);
+
+        miConsulta.setText("Consultar");
+        miConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultaActionPerformed(evt);
+            }
+        });
+        MCategoria.add(miConsulta);
+
+        miActualiza.setText("Actualizar");
+        miActualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miActualizaActionPerformed(evt);
+            }
+        });
+        MCategoria.add(miActualiza);
+
+        miEliminar.setText("Eliminar");
+        miEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miEliminarActionPerformed(evt);
+            }
+        });
+        MCategoria.add(miEliminar);
+
         mbMenuprincipal.add(MCategoria);
 
         jMenu1.setText("Unidad De Medida");
@@ -262,31 +296,31 @@ String usuario;
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-       lblLoginUser.setText(usuario);
-    Reloj r=new Reloj(lblhora);
-       r.iniciar();
-       r.start();
+        lblLoginUser.setText(usuario);
+        Reloj r = new Reloj(lblhora);
+        r.iniciar();
+        r.start();
         Calendar fecha = new GregorianCalendar();
-       
+
         int ano = fecha.get(Calendar.YEAR);
         int mes = fecha.get(Calendar.MONTH);
         int dia = fecha.get(Calendar.DAY_OF_MONTH);
-        lblfecha.setText(""+dia+"/"+ (mes+1) +"/"+ano);
-       
-      
+        lblfecha.setText("" + dia + "/" + (mes + 1) + "/" + ano);
+
+
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-       con.cerrarConexion();
+        con.cerrarConexion();
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
 
     private void MinimizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinimizaActionPerformed
-       this.setExtendedState(ICONIFIED);
+        this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_MinimizaActionPerformed
 
     private void laboFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_laboFocusGained
-       
+
     }//GEN-LAST:event_laboFocusGained
 
     private void empaqueActualiza_activaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empaqueActualiza_activaMouseClicked
@@ -298,111 +332,131 @@ String usuario;
     }//GEN-LAST:event_empaqueActualiza_activaMouseClicked
 
     private void regresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresaActionPerformed
-        Login m=new Login();
+        Login m = new Login();
         m.setVisible(true);
-    
+
 
         dispose();
     }//GEN-LAST:event_regresaActionPerformed
 
-    private void MCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MCategoriaMouseClicked
-        Categoria c= new Categoria();
-        c.setVisible(true);
-        c.username=usuario;
-        dispose();
-    }//GEN-LAST:event_MCategoriaMouseClicked
-
     private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
-    Laboratorio m=new Laboratorio();
+        Laboratorio m = new Laboratorio();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
-
 
 
     }//GEN-LAST:event_jMenuItem3MouseClicked
 
     private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
-      LabConsulta l=new LabConsulta();
+        LabConsulta l = new LabConsulta();
         l.setVisible(true);
-        l.Username=usuario;
+        l.Username = usuario;
         dispose();
 
     }//GEN-LAST:event_jMenuItem4MouseClicked
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-      LabConsulta l=new LabConsulta();
+        LabConsulta l = new LabConsulta();
         l.setVisible(true);
-        l.Username=usuario;
+        l.Username = usuario;
         dispose();
 
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        Laboratorio m=new Laboratorio();
+        Laboratorio m = new Laboratorio();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        LabActualizar m=new LabActualizar();
+        LabActualizar m = new LabActualizar();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-      LabEliminar m=new LabEliminar();
+        LabEliminar m = new LabEliminar();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
- Unidad_Medida m=new Unidad_Medida();
+        Unidad_Medida m = new Unidad_Medida();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void registrar_EmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_EmpaqueActionPerformed
-       EmpaqueRegistra m=new EmpaqueRegistra();
+        EmpaqueRegistra m = new EmpaqueRegistra();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
     }//GEN-LAST:event_registrar_EmpaqueActionPerformed
 
     private void consulta_baja_EmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consulta_baja_EmpaqueActionPerformed
-        EmpaqueConsultaBaja m=new EmpaqueConsultaBaja();
+        EmpaqueConsultaBaja m = new EmpaqueConsultaBaja();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
     }//GEN-LAST:event_consulta_baja_EmpaqueActionPerformed
 
     private void listageneralEmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listageneralEmpaqueActionPerformed
-          ListaGeneralEmpaque m=new ListaGeneralEmpaque();
+        ListaGeneralEmpaque m = new ListaGeneralEmpaque();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
 
     }//GEN-LAST:event_listageneralEmpaqueActionPerformed
 
     private void empaqueActualiza_activaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empaqueActualiza_activaActionPerformed
-        EmpaqueActualizayactiva m=new EmpaqueActualizayactiva();
+        EmpaqueActualizayactiva m = new EmpaqueActualizayactiva();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
     }//GEN-LAST:event_empaqueActualiza_activaActionPerformed
 
     private void Actuva_actualiza_EmpaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actuva_actualiza_EmpaqueActionPerformed
-          EmpaqueActualizayactiva m=new EmpaqueActualizayactiva();
+        EmpaqueActualizayactiva m = new EmpaqueActualizayactiva();
         m.setVisible(true);
-        m.Username=usuario;
+        m.Username = usuario;
         dispose();
     }//GEN-LAST:event_Actuva_actualiza_EmpaqueActionPerformed
+
+    private void miRegistraCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRegistraCategoriaActionPerformed
+        CategoriaRegistrar reca = new CategoriaRegistrar();
+        reca.setVisible(true);
+        reca.Username = usuario;
+        dispose();
+    }//GEN-LAST:event_miRegistraCategoriaActionPerformed
+
+    private void miEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEliminarActionPerformed
+        CategoriaEliminar elca = new CategoriaEliminar();
+        elca.setVisible(true);
+        elca.Username = usuario;
+        dispose();
+    }//GEN-LAST:event_miEliminarActionPerformed
+
+    private void miConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaActionPerformed
+          Categoria ca= new Categoria();
+          ca.setVisible(true);
+          ca.username= usuario;
+          dispose();
+    }//GEN-LAST:event_miConsultaActionPerformed
+
+    private void miActualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miActualizaActionPerformed
+          CategoriaActualiza acca= new CategoriaActualiza();
+          acca.setVisible(true);
+          acca.Username= usuario;
+          dispose();
+    }//GEN-LAST:event_miActualizaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,6 +515,10 @@ String usuario;
     private javax.swing.JLabel lblhora;
     private javax.swing.JMenuItem listageneralEmpaque;
     private javax.swing.JMenuBar mbMenuprincipal;
+    private javax.swing.JMenuItem miActualiza;
+    private javax.swing.JMenuItem miConsulta;
+    private javax.swing.JMenuItem miEliminar;
+    private javax.swing.JMenuItem miRegistraCategoria;
     private javax.swing.JMenuItem registrar_Empaque;
     private javax.swing.JButton regresa;
     private javax.swing.JButton salir;
