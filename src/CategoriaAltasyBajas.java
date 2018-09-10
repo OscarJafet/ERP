@@ -173,6 +173,7 @@ public class CategoriaAltasyBajas extends javax.swing.JFrame {
                     ca.elimina(dat, conect.abreConexion());
                     borrarTabla(Tabla1);
                     ca.ConsultaGeneral(Tabla1,conect.abreConexion());
+                    this.repaint();
                 } catch (Exception ex) {
                     Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -193,6 +194,7 @@ public class CategoriaAltasyBajas extends javax.swing.JFrame {
                     ca.alta(dat, conect.abreConexion());
                     borrarTabla(Tabla1);
                     ca.ConsultaGeneral(Tabla1,conect.abreConexion());
+                    this.repaint();
                 } catch (Exception ex) {
                     Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }

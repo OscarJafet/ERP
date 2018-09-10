@@ -285,7 +285,7 @@ DefaultTableModel tam=(DefaultTableModel)tablaconsultaybaja.getModel();
                     try {
 
                         em.consultaTodosEmpaque(tablaconsultaybaja, con.abreConexion());
-
+                        this.repaint();
                   
                     } catch (ClassNotFoundException ex) {
 

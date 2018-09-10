@@ -191,6 +191,7 @@ public class LabEliminar extends javax.swing.JFrame {
                 }
                 try {
                     la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
+                    this.repaint();
                 }catch (Exception ex) {
                     Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -235,6 +236,7 @@ public class LabEliminar extends javax.swing.JFrame {
                 }
                 try {
                     la.consultaTodosLaboratorios(TablaLaboratorios, cont.abreConexion());
+                    this.repaint();
                 }catch (Exception ex) {
                     Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }

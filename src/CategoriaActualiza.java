@@ -153,6 +153,7 @@ public class CategoriaActualiza extends javax.swing.JFrame {
         borrarTabla(Tabla1);
                             try {
                         ca.ConsultaGeneral(Tabla1, conect.abreConexion());
+                        this.repaint();
                     }catch (Exception ex) {
                     Logger.getLogger(CategoriaActualiza.class.getName()).log(Level.SEVERE, null, ex);
                 }

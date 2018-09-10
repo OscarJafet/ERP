@@ -254,7 +254,7 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
               try {
        
                   em.consultaTodosEmpaque(tablaactualiza, con.abreConexion());
-                  
+                  this.repaint();
               } catch (ClassNotFoundException ex) {
         
                   Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
@@ -288,7 +288,7 @@ DefaultTableModel tam=(DefaultTableModel)tbl.getModel();
               try {
        
                   em.consultaTodosEmpaque(tablaactualiza, con.abreConexion());
-                    
+                  this.repaint();  
               } catch (ClassNotFoundException ex) {
         
                   Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
