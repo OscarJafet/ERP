@@ -11,32 +11,33 @@ import javax.swing.table.DefaultTableModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author king6
  */
-public class CategoriaEliminar extends javax.swing.JFrame {
+public class CategoriaAltasyBajas extends javax.swing.JFrame {
 
     String Username;
     Conexion conect;
-    CategoriaCRUD ca= new CategoriaCRUD();
+    CategoriaCRUD ca = new CategoriaCRUD();
+
     /**
      * Creates new form EliminarCategoria
      */
-    public CategoriaEliminar() {
+    public CategoriaAltasyBajas() {
         initComponents();
-        
-         setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
-          this.setLocationRelativeTo(null);
-          
-              try {
-        conect.abreConexion();
-        ca.ConsultaGeneral(Tabla1, conect.abreConexion());
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+
+        setIconImage(new ImageIcon(getClass().getResource("/iconoSW/agro.jpg")).getImage());
+        btnConfirmar.setEnabled(false);
+        this.setLocationRelativeTo(null);
+
+        try {
+            conect.abreConexion();
+            ca.ConsultaGeneral(Tabla1, conect.abreConexion());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    }          
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +56,8 @@ public class CategoriaEliminar extends javax.swing.JFrame {
         btnElimina = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnMinimar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
+        cmbEleccion = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,6 +75,7 @@ public class CategoriaEliminar extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, -1, -1));
 
+        txfNombre.setEnabled(false);
         txfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txfNombreKeyTyped(evt);
@@ -116,13 +119,21 @@ public class CategoriaEliminar extends javax.swing.JFrame {
         });
         getContentPane().add(btnMinimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 11, -1, -1));
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirmar.setText("Action");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnConfirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+
+        cmbEleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "¿Que desea Realizar? ", "Alta", "Baja" }));
+        cmbEleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEleccionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmbEleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesLogin/background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -137,65 +148,92 @@ public class CategoriaEliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-           Menu m=new Menu();
-           m.setVisible(true);
-            m.usuario=String.valueOf(Username);
-           dispose();
+        Menu m = new Menu();
+        m.setVisible(true);
+        m.usuario = String.valueOf(Username);
+        dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnMinimarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimarActionPerformed
-            this.setExtendedState(ICONIFIED);
+        this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_btnMinimarActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-            Object dat[]= new Object[10];
-            int valor= Tabla1.getSelectedRow();
-            
-            if (valor!=-1){
-                txfNombre.setText(String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 1).toString()));
-                Object status;
-                status= String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 2).toString());
-                
-                if( status.equals("A")){
-                    dat[0]=String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 1).toString());
-                  
-                    try{
-                        
-                        ca.elimina(dat,conect.abreConexion());
-                        borrarTabla(Tabla1);
-                    }catch(Exception ex){
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        Object dat[] = new Object[10];
+        btnConfirmar.getText();
+        if (btnConfirmar.getText().equals("Baja")) {
+            Object status;
+            status = String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 2).toString());
+
+            if (status.equals("A")) {
+                dat[0] = String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 1).toString());
+
+                try {
+
+                    ca.elimina(dat, conect.abreConexion());
+                    borrarTabla(Tabla1);
+                    ca.ConsultaGeneral(Tabla1,conect.abreConexion());
+                } catch (Exception ex) {
                     Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                    try {
-                        ca.ConsultaGeneral(Tabla1, conect.abreConexion());
-                    }catch (Exception ex) {
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con alta");
+            }
+        }
+
+        if (btnConfirmar.getText().equals("Alta")) {
+            Object status;
+            status = String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 2).toString());
+
+            if (status.equals("B")) {
+                dat[0] = String.valueOf(Tabla1.getValueAt(Tabla1.getSelectedRow(), 1).toString());
+
+                try {
+
+                    ca.alta(dat, conect.abreConexion());
+                    borrarTabla(Tabla1);
+                    ca.ConsultaGeneral(Tabla1,conect.abreConexion());
+                } catch (Exception ex) {
                     Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                }else{
-                    JOptionPane.showMessageDialog(null,"Seleccione un registro con baja");
-                }
-            
-            }else{
-                JOptionPane.showMessageDialog(null,"Debe Seleccuonar una fila");
-            }        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Seleccione un registro con baja");
+            }
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfNombreKeyTyped
-      char Validar=evt.getKeyChar();
-      if(Character.isDigit(Validar)){
-      getToolkit().beep();
-      evt.consume();
-          JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
-      }        
+        char Validar = evt.getKeyChar();
+        if (Character.isDigit(Validar)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingrese solo letras");
+        }
     }//GEN-LAST:event_txfNombreKeyTyped
 
-        public void borrarTabla(JTable tabla){
-        DefaultTableModel tamblatem=(DefaultTableModel)tabla.getModel();
-            for (int i = tamblatem.getRowCount()-1; i >=0; i--) {
-                tamblatem.removeRow(i);
-                tamblatem.removeTableModelListener(tabla);
-            }
+    private void cmbEleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEleccionActionPerformed
+        String dato = (String) cmbEleccion.getSelectedItem();
+        if (dato.equals("Baja")) {
+            btnConfirmar.setEnabled(true);
+            btnConfirmar.setText(dato);
+        }
+        if (dato.equals("Alta")) {
+            btnConfirmar.setEnabled(true);
+            btnConfirmar.setText(dato);
+        }
+    }//GEN-LAST:event_cmbEleccionActionPerformed
+
+    public void borrarTabla(JTable tabla) {
+        DefaultTableModel tamblatem = (DefaultTableModel) tabla.getModel();
+        for (int i = tamblatem.getRowCount() - 1; i >= 0; i--) {
+            tamblatem.removeRow(i);
+            tamblatem.removeTableModelListener(tabla);
+        }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -213,30 +251,31 @@ public class CategoriaEliminar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CategoriaEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaAltasyBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CategoriaEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaAltasyBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CategoriaEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaAltasyBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CategoriaEliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CategoriaAltasyBajas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CategoriaEliminar().setVisible(true);
+                new CategoriaAltasyBajas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla1;
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnElimina;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMinimar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox cmbEleccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

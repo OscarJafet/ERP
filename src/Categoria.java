@@ -158,7 +158,7 @@ public class Categoria extends javax.swing.JFrame {
                 ca.ConsultaEspecifica(Tabla1, conect.abreConexion(), dat);
 
             } catch (Exception ex) {
-                Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Categoria.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showConfirmDialog(null, "Debes ingresar el Nombre");

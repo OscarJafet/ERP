@@ -273,7 +273,7 @@ public class Menu extends javax.swing.JFrame {
         MCategoria.add(miActualiza);
         MCategoria.add(jSeparator8);
 
-        miEliminar.setText("Eliminar");
+        miEliminar.setText("Altas y Bajas");
         miEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 miEliminarActionPerformed(evt);
@@ -450,7 +450,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_miRegistraCategoriaActionPerformed
 
     private void miEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEliminarActionPerformed
-        CategoriaEliminar elca = new CategoriaEliminar();
+        CategoriaAltasyBajas elca = new CategoriaAltasyBajas();
         elca.setVisible(true);
         elca.Username = usuario;
         dispose();

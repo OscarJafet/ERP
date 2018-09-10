@@ -141,20 +141,20 @@ public class CategoriaActualiza extends javax.swing.JFrame {
             try{
                  ca.actualiza(dat,conect.abreConexion());
             }catch(Exception ex){
-                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Categoria.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
         else{
             JOptionPane.showMessageDialog(rootPane,"No se aceptan campos vacios");
         }
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Seleccione una fils");
+            JOptionPane.showMessageDialog(rootPane,"Seleccione un renglon");
         }
         borrarTabla(Tabla1);
                             try {
                         ca.ConsultaGeneral(Tabla1, conect.abreConexion());
                     }catch (Exception ex) {
-                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CategoriaActualiza.class.getName()).log(Level.SEVERE, null, ex);
                 }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

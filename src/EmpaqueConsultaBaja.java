@@ -294,7 +294,7 @@ DefaultTableModel tam=(DefaultTableModel)tablaconsultaybaja.getModel();
                     }
                 }else{ JOptionPane.showConfirmDialog(null, "Selecione un renglon de Alta");   }
             }else{
-                JOptionPane.showConfirmDialog(null, "Selecione un renglon");
+                JOptionPane.showConfirmDialog(null, "Seleccione un renglon");
 
             }
 

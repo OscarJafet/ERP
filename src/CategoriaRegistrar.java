@@ -138,7 +138,7 @@ public class CategoriaRegistrar extends javax.swing.JFrame {
             try{
                  ca.inserta(dat,conect.abreConexion());
             }catch(Exception ex){
-                    Logger.getLogger(EmpaqueOrigin.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CategoriaRegistrar.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
         else{
