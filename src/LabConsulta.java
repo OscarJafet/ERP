@@ -176,7 +176,7 @@ LaboratorioOperaciones la=new LaboratorioOperaciones();
     private void regresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresaActionPerformed
         Menu m=new Menu();
         m.setVisible(true);
-
+        m.usuario=Username;
         dispose();
     }//GEN-LAST:event_regresaActionPerformed
 
